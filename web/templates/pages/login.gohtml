@@ -1,0 +1,45 @@
+{{define "title"}}Connexion — Épure{{end}}
+{{define "content"}}
+  <div class="auth-card" data-component="login-form" data-endpoint="/api/auth/login">
+    <div class="auth-card__logo">
+      <a href="/" up-follow>Épure</a>
+    </div>
+
+    <h1 class="auth-card__title">Connexion</h1>
+    <p class="auth-card__subtitle">Content de vous revoir.</p>
+
+    {{if .Error}}
+    <div class="u-flex u-items-center u-gap-2 u-mb-6 u-bg-error-light u-radius-sm" style="padding:var(--space-3)">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="var(--color-error)" stroke-width="1.5"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg>
+      <p class="u-text-sm u-fw-medium u-text-error">{{.Error}}</p>
+    </div>
+    {{end}}
+
+    <form action="/login" method="POST" up-submit novalidate>
+      <div class="form-group u-mb-4">
+        <label class="form-label" for="login-email">Email</label>
+        <input type="email" id="login-email" name="email" class="form-input" required autocomplete="email" placeholder="vous@exemple.com" value="{{.Email}}">
+      </div>
+
+      <div class="form-group u-mb-2">
+        <label class="form-label" for="login-password">Mot de passe</label>
+        <div class="u-relative">
+          <input type="password" id="login-password" name="password" class="form-input" required autocomplete="current-password" placeholder="••••••••" minlength="8">
+          <button type="button" class="password-toggle u-text-muted" data-action="toggle-password" data-target="login-password" aria-label="Afficher le mot de passe">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4C4 4 1 10 1 10s3 6 9 6 9-6 9-6-3-6-9-6z"/><circle cx="10" cy="10" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="u-mb-6 u-text-right">
+        <a class="u-text-xs u-text-muted" href="/forgot-password" up-follow>Mot de passe oublié&nbsp;?</a>
+      </div>
+
+      <button type="submit" class="btn btn--primary u-w-full">Se connecter</button>
+    </form>
+
+    <div class="auth-card__footer">
+      <p>Pas encore de compte&nbsp;? <a href="/register" up-follow>Créer un compte</a></p>
+    </div>
+  </div>
+{{end}}

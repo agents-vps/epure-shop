@@ -1,0 +1,37 @@
+{{define "title"}}Catégories — Administration Épure{{end}}
+{{define "content"}}
+
+  <div class="admin-content__header">
+    <h1 class="admin-content__title">Catégories</h1>
+    <div class="admin-content__actions">
+      <button class="btn btn--primary btn--sm" data-action="add-category">+ Nouvelle catégorie</button>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Slug</th>
+          <th>Produits</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Categories}}
+        <tr>
+          <td><strong>{{.Name}}</strong></td>
+          <td><code>{{.Slug}}</code></td>
+          <td>{{.ProductCount}}</td>
+          <td>
+            <button class="btn btn--ghost btn--sm" data-action="edit-category" data-id="{{.ID}}">Modifier</button>
+            <button class="btn btn--ghost btn--sm u-text-error" data-action="delete-category" data-id="{{.ID}}">Supprimer</button>
+          </td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+
+{{end}}

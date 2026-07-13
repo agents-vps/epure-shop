@@ -1,0 +1,8 @@
+{{define "breadcrumb"}}
+<nav class="breadcrumb page-header-spacing" aria-label="Fil d'Ariane">
+  {{range $i, $item := .Breadcrumbs}}
+  {{if $i}}<span class="breadcrumb__sep">/</span>{{end}}
+  {{if $item.URL}}<a href="{{$item.URL}}" class="breadcrumb__link" up-follow>{{$item.Label}}</a>{{else}}<span class="breadcrumb__current" aria-current="page">{{$item.Label}}</span>{{end}}
+  {{end}}
+</nav>
+{{end}}

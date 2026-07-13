@@ -1,0 +1,70 @@
+{{define "title"}}{{if .Product}}Modifier {{.Product.Name}}{{else}}Nouveau produit{{end}} — Administration Épure{{end}}
+{{define "content"}}
+
+  <div class="admin-content__header">
+    <a href="/admin/products" class="btn btn--ghost btn--sm" up-follow>&larr; Retour aux produits</a>
+    <h1 class="admin-content__title">{{if .Product}}Modifier {{.Product.Name}}{{else}}Nouveau produit{{end}}</h1>
+  </div>
+
+  <form action="/admin/products{{if .Product}}/{{.Product.ID}}{{end}}" method="POST" up-submit class="u-max-w-680" novalidate>
+    <div class="form-group u-mb-4">
+      <label class="form-label" for="product-name">Nom du produit</label>
+      <input type="text" id="product-name" name="name" class="form-input" required value="{{.Product.Name}}">
+    </div>
+
+    <div class="form-group u-mb-4">
+      <label class="form-label" for="product-slug">Slug</label>
+      <input type="text" id="product-slug" name="slug" class="form-input" required value="{{.Product.Slug}}">
+    </div>
+
+    <div class="form-group u-mb-4">
+      <label class="form-label" for="product-description">Description</label>
+      <textarea id="product-description" name="description" class="form-input" rows="5">{{.Product.Description}}</textarea>
+    </div>
+
+    <div class="u-grid u-gap-4 u-grid-cols-2 u-mb-4">
+      <div class="form-group">
+        <label class="form-label" for="product-price">Prix (centimes)</label>
+        <input type="number" id="product-price" name="price" class="form-input" required min="0" value="{{.Product.Price.Cents}}">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="product-compare-price">Prix barré (centimes, optionnel)</label>
+        <input type="number" id="product-compare-price" name="compare_price" class="form-input" min="0" value="{{if .Product.ComparePrice}}{{.Product.ComparePrice.Cents}}{{end}}">
+      </div>
+    </div>
+
+    <div class="u-grid u-gap-4 u-grid-cols-2 u-mb-4">
+      <div class="form-group">
+        <label class="form-label" for="product-category">Catégorie</label>
+        <select id="product-category" name="category_id" class="form-select" required>
+          {{range .Categories}}
+          <option value="{{.ID}}"{{if eq .ID $.Product.CategoryID}} selected{{end}}>{{.Name}}</option>
+          {{end}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="product-stock">Stock</label>
+        <input type="number" id="product-stock" name="stock" class="form-input" required min="0" value="{{.Product.Stock}}">
+      </div>
+    </div>
+
+    <div class="form-group u-mb-4">
+      <label class="form-label" for="product-status">Statut</label>
+      <select id="product-status" name="status" class="form-select">
+        <option value="draft"{{if eq .Product.Status "draft"}} selected{{end}}>Brouillon</option>
+        <option value="published"{{if eq .Product.Status "published"}} selected{{end}}>Publié</option>
+      </select>
+    </div>
+
+    <div class="form-group u-mb-6">
+      <label class="form-label" for="product-image">URL de l'image</label>
+      <input type="url" id="product-image" name="image_url" class="form-input" value="{{.Product.ImageURL}}">
+    </div>
+
+    <div class="u-flex u-gap-3">
+      <button type="submit" class="btn btn--primary">{{if .Product}}Enregistrer{{else}}Créer le produit{{end}}</button>
+      <a href="/admin/products" class="btn btn--ghost" up-follow>Annuler</a>
+    </div>
+  </form>
+
+{{end}}

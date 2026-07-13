@@ -1,0 +1,90 @@
+{{define "base"}}<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{block "title" .}}Épure — Boutique minimaliste{{end}}</title>
+<meta name="description" content="{{block "description" .}}Épure — Pièces artisanales et design minimaliste{{end}}">
+<link rel="stylesheet" href="/static/css/tokens.css">
+<link rel="stylesheet" href="/static/css/base.css">
+<link rel="stylesheet" href="/static/css/components.css">
+<link rel="stylesheet" href="/static/css/utilities.css">
+<link rel="stylesheet" href="/static/css/shop.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="/static/vendor/unpoly.min.js"></script>
+<link rel="stylesheet" href="/static/vendor/unpoly.min.css">
+</head>
+<body>
+
+<!-- SKIP LINK -->
+<a href="#main" class="skip-link">Aller au contenu principal</a>
+
+{{template "header" .}}
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" data-component="mobile-menu" data-state="closed" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+  <div class="mobile-menu__header">
+    <a href="/" class="shop-header__logo" up-follow>Épure</a>
+    <button class="btn btn--icon btn--ghost" data-action="close-mobile-menu" aria-label="Fermer le menu">
+      <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu__nav" aria-label="Menu mobile">
+    {{range .Categories}}
+    <a href="/category/{{.Slug}}" class="mobile-menu__link" up-follow>{{.Name}}</a>
+    {{end}}
+  </nav>
+</div>
+
+<!-- MAIN -->
+<main id="main">
+{{block "content" .}}{{end}}
+</main>
+
+{{template "footer" .}}
+
+<!-- CART DRAWER -->
+<div class="drawer-backdrop" data-component="cart-drawer" data-state="closed" aria-hidden="true">
+  <div class="drawer" role="dialog" aria-modal="true" aria-label="Panier">
+    <div class="drawer__header">
+      <h3>Panier</h3>
+      <button class="drawer__close" data-action="close-cart" aria-label="Fermer le panier">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body" data-component="cart-drawer-items" data-state="empty">
+      <div class="state-loading">
+        <div class="skeleton skeleton--text"></div>
+        <div class="skeleton skeleton--text"></div>
+        <div class="skeleton skeleton--text u-w-60"></div>
+      </div>
+      <div class="state-empty">
+        <div class="empty-state">
+          <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="var(--color-ink-subtle)" stroke-width="1.5" aria-hidden="true">
+            <rect x="10" y="14" width="44" height="40" rx="3"/>
+            <path d="M22 30h20M22 38h14"/>
+          </svg>
+          <h4 class="empty-state__title">Votre panier est vide</h4>
+          <p class="empty-state__text">Parcourez nos catégories pour découvrir des pièces uniques.</p>
+        </div>
+      </div>
+      <div class="state-error">
+        <p class="u-text-error">Erreur lors du chargement du panier.</p>
+      </div>
+      <div class="state-content"></div>
+    </div>
+    <div class="drawer__footer">
+      <a href="/cart" class="btn btn--primary u-w-full" up-follow>Passer commande</a>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" data-component="toast" aria-live="polite" aria-atomic="true"></div>
+
+<script src="/static/js/ui.js"></script>
+<script src="/static/js/shop.js"></script>
+</body>
+</html>
+{{end}}

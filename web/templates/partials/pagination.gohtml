@@ -1,0 +1,23 @@
+{{define "pagination"}}
+<nav class="pagination u-pt-8" aria-label="Pagination">
+  {{if .HasPrev}}
+  <a href="?page={{.PrevPage}}{{if $.Query}}&q={{$.Query}}{{end}}" class="pagination__btn" aria-label="Page précédente" up-follow up-target="main">&larr; Précédent</a>
+  {{else}}
+  <button class="pagination__btn" disabled aria-label="Page précédente">&larr; Précédent</button>
+  {{end}}
+
+  {{range .Pages}}
+  {{if .Active}}
+  <button class="pagination__btn pagination__btn--active" aria-current="page">{{.Number}}</button>
+  {{else}}
+  <a href="?page={{.Number}}{{if $.Query}}&q={{$.Query}}{{end}}" class="pagination__btn" up-follow up-target="main">{{.Number}}</a>
+  {{end}}
+  {{end}}
+
+  {{if .HasNext}}
+  <a href="?page={{.NextPage}}{{if $.Query}}&q={{$.Query}}{{end}}" class="pagination__btn" aria-label="Page suivante" up-follow up-target="main">Suivant &rarr;</a>
+  {{else}}
+  <button class="pagination__btn" disabled aria-label="Page suivante">Suivant &rarr;</button>
+  {{end}}
+</nav>
+{{end}}

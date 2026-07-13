@@ -1,0 +1,98 @@
+{{define "title"}}Commande confirmée — Épure{{end}}
+{{define "content"}}
+  <div class="container">
+    <article class="order-confirmation">
+
+      <div class="order-confirmation__check" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 10l4 4 6-8"/>
+        </svg>
+      </div>
+
+      <h1>Commande confirmée</h1>
+
+      <p class="u-mb-6 u-text-lg u-text-muted">
+        Merci, <strong>{{.Order.CustomerName}}</strong> !<br>
+        Votre commande a bien été enregistrée.
+      </p>
+
+      <p class="u-mb-8 u-text-sm">
+        Numéro de commande&nbsp;:
+        <strong class="u-text-md u-text-accent">#{{.Order.Ref}}</strong>
+      </p>
+
+      <div class="table-wrapper u-mb-8 u-text-left">
+        <table class="table">
+          <thead>
+            <tr><th>Article</th><th>Qté</th><th>Prix</th></tr>
+          </thead>
+          <tbody>
+            {{range .Order.Items}}
+            <tr>
+              <td>
+                <p class="u-fw-medium">{{.Name}}</p>
+              </td>
+              <td>{{.Quantity}}</td>
+              <td class="u-fw-medium">{{money .UnitPrice}}</td>
+            </tr>
+            {{end}}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="u-text-right u-fw-semibold u-text-muted" colspan="2">Sous-total</td>
+              <td class="u-fw-medium">{{money .Order.Subtotal}}</td>
+            </tr>
+            <tr>
+              <td class="u-text-right u-fw-semibold u-text-muted" colspan="2">Livraison</td>
+              <td class="u-fw-medium">{{money .Order.ShippingCost}}</td>
+            </tr>
+            {{if .Order.DiscountAmount}}
+            <tr>
+              <td class="u-text-right u-fw-semibold u-text-muted" colspan="2">Réduction</td>
+              <td class="u-fw-medium">−{{money .Order.DiscountAmount}}</td>
+            </tr>
+            {{end}}
+            <tr>
+              <td class="u-text-md u-text-right u-fw-bold" colspan="2">Total</td>
+              <td class="u-text-md u-fw-bold">{{money .Order.Total}}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="u-grid u-gap-4 u-mb-8 u-text-left">
+        <div class="u-bg-card u-radius-md" style="border:1px solid var(--color-border); padding:var(--space-4)">
+          <p class="u-mb-1 u-text-xs u-text-muted">Adresse de livraison</p>
+          <p class="u-text-sm u-fw-medium">{{.Order.ShippingAddress}}</p>
+        </div>
+        <div class="u-bg-card u-radius-md" style="border:1px solid var(--color-border); padding:var(--space-4)">
+          <p class="u-mb-1 u-text-xs u-text-muted">Méthode de livraison</p>
+          <p class="u-text-sm u-fw-medium">{{.Order.DeliveryMethod}}</p>
+        </div>
+      </div>
+
+      <div class="u-mb-8 u-text-left u-bg-accent-surface u-radius-md" style="padding:var(--space-6)">
+        <h2 class="u-mb-3 u-text-lg">Prochaines étapes</h2>
+        <ul class="u-flex u-flex-col u-gap-2 u-text-sm u-text-muted">
+          <li class="u-flex u-gap-2">
+            <svg class="u-flex-shrink-0 u-mt-1" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><circle cx="10" cy="10" r="9"/><path d="M6 10l3 3 5-6"/></svg>
+            <span>Vous recevrez un email de confirmation à <strong>{{.Order.Email}}</strong>.</span>
+          </li>
+          <li class="u-flex u-gap-2">
+            <svg class="u-flex-shrink-0 u-mt-1" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><circle cx="10" cy="10" r="9"/><path d="M10 6v5M10 13.5v.5"/></svg>
+            <span>Nous vous informerons dès l'expédition de votre colis.</span>
+          </li>
+          <li class="u-flex u-gap-2">
+            <svg class="u-flex-shrink-0 u-mt-1" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M2 7l8 5 8-5"/></svg>
+            <span>Un lien de suivi vous sera envoyé par email.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="u-flex u-flex-wrap u-justify-center u-gap-4">
+        <a href="/account" class="btn btn--primary" up-follow>Suivre ma commande</a>
+        <a href="/" class="btn btn--secondary" up-follow>Continuer mes achats</a>
+      </div>
+    </article>
+  </div>
+{{end}}

@@ -1,0 +1,56 @@
+{{define "cart-drawer"}}
+<div class="drawer-backdrop" data-component="cart-drawer" data-state="closed" aria-hidden="true">
+  <div class="drawer" role="dialog" aria-modal="true" aria-label="Panier">
+    <div class="drawer__header">
+      <h3>Panier</h3>
+      <button class="drawer__close" data-action="close-cart" aria-label="Fermer le panier">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body" data-component="cart-drawer-items" data-state="{{if .Cart.Items}}success{{else}}empty{{end}}">
+      <div class="state-loading">
+        <div class="skeleton skeleton--text"></div>
+        <div class="skeleton skeleton--text"></div>
+        <div class="skeleton skeleton--text u-w-60"></div>
+      </div>
+      <div class="state-empty">
+        <div class="empty-state">
+          <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="var(--color-ink-subtle)" stroke-width="1.5" aria-hidden="true">
+            <rect x="10" y="14" width="44" height="40" rx="3"/>
+            <path d="M22 30h20M22 38h14"/>
+          </svg>
+          <h4 class="empty-state__title">Votre panier est vide</h4>
+          <p class="empty-state__text">Parcourez nos catégories pour découvrir des pièces uniques.</p>
+        </div>
+      </div>
+      <div class="state-error">
+        <p class="u-text-error">Erreur lors du chargement du panier.</p>
+      </div>
+      <div class="state-content">
+        {{range .Cart.Items}}
+        <div class="u-flex u-gap-3 u-mb-4 u-pb-4 u-border-b">
+          <div class="u-flex-shrink-0 u-bg-border-light u-radius-sm u-img-64x80">
+            {{if .Product.ImageURL}}<img src="{{.Product.ImageURL}}" class="u-w-full u-radius-sm u-h-full u-object-cover" alt="{{.Product.Name}}">{{else}}<div class="u-flex u-items-center u-justify-center u-w-full u-h-full u-text-xs u-text-muted">{{.Product.Name}}</div>{{end}}
+          </div>
+          <div class="u-flex-1 u-w-0">
+            <p class="u-text-sm u-fw-medium">{{.Product.Name}}</p>
+            <p class="u-text-xs u-text-muted">Qté : {{.Quantity}}</p>
+            <p class="u-text-sm u-fw-semibold u-mt-1">{{money .Product.Price}}</p>
+          </div>
+          <button class="btn btn--icon btn--ghost u-self-start" aria-label="Supprimer" data-action="remove" data-product-id="{{.ProductID}}">
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+          </button>
+        </div>
+        {{end}}
+      </div>
+    </div>
+    <div class="drawer__footer">
+      <div class="u-flex u-justify-between u-mb-3">
+        <span class="u-fw-medium">Total</span>
+        <span class="u-fw-bold">{{money .Cart.Total}}</span>
+      </div>
+      <a href="/cart" class="btn btn--primary u-w-full" up-layer="new" up-follow>Voir le panier</a>
+    </div>
+  </div>
+</div>
+{{end}}

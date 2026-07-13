@@ -1,0 +1,108 @@
+{{define "title"}}Épure — Boutique minimaliste{{end}}
+{{define "description"}}Épure — Pièces artisanales et design minimaliste. Découvrez notre collection de céramique, textile, déco et art de vivre.{{end}}
+{{define "content"}}
+
+  <!-- HERO -->
+  <section class="hero container">
+    <div class="hero__content">
+      <h1 class="hero__title">L'essentiel, simplement</h1>
+      <p class="hero__text">Des pièces artisanales sélectionnées pour leur beauté sobre et leur fabrication soignée. Chaque objet raconte une histoire.</p>
+      <a href="/category/nouveautes" class="btn btn--primary btn--lg" up-follow>Découvrir la collection</a>
+    </div>
+    <div class="hero__image" aria-hidden="true">
+      <div class="u-flex u-items-center u-justify-center u-w-full u-h-full" style="background:linear-gradient(135deg, var(--color-accent-light), var(--color-surface))">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.5" aria-hidden="true">
+          <path d="M40 10c-15 0-28 12-28 27s13 27 28 27 28-12 28-27-13-27-28-27z"/>
+          <path d="M40 20c-8 0-16 7-16 17s8 17 16 17 16-7 16-17-8-17-16-17z"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- REASSURANCE BAND -->
+  <div class="reassurance container">
+    <div class="reassurance__item">
+      <svg class="reassurance__icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <rect x="6" y="10" width="28" height="20" rx="3"/><path d="M14 18h12M14 24h8"/>
+      </svg>
+      <div><p class="reassurance__title">Fabrication artisanale</p><p class="reassurance__text">Pièces faites main en France</p></div>
+    </div>
+    <div class="reassurance__item">
+      <svg class="reassurance__icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <circle cx="20" cy="15" r="11"/><path d="M12 25c-1 0-3 2-3 3h22c0-1-2-3-3-3"/>
+      </svg>
+      <div><p class="reassurance__title">Livraison neutre en carbone</p><p class="reassurance__text">Sous 3–5 jours ouvrés</p></div>
+    </div>
+    <div class="reassurance__item">
+      <svg class="reassurance__icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M10 18l7 7 13-13"/>
+      </svg>
+      <div><p class="reassurance__title">Retours gratuits</p><p class="reassurance__text">Sous 30 jours, sans condition</p></div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section container">
+    <div class="section__header">
+      <h2 class="section__title">Catégories</h2>
+    </div>
+    <div class="grid-3">
+      {{range .Categories}}
+      <article>
+        <a href="/category/{{.Slug}}" class="category-card" up-follow>
+          <div class="category-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle" style="background:oklch(85% 0.04 245)">{{.Name}}</div>
+          <div class="category-card__overlay">
+            <h3 class="category-card__title">{{.Name}}</h3>
+          </div>
+        </a>
+      </article>
+      {{end}}
+    </div>
+  </section>
+
+  <!-- NOUVEAUTÉS -->
+  <section class="section container">
+    <div class="section__header">
+      <h2 class="section__title">Nouveautés</h2>
+      <a href="/category/nouveautes" class="section__link" up-follow>Voir tout &rarr;</a>
+    </div>
+    {{if .FeaturedProducts}}
+    <div class="grid-4">
+      {{range .FeaturedProducts}}
+      {{template "product-card" .}}
+      {{end}}
+    </div>
+    {{else}}
+    {{template "empty-state" dict "Title" "Produits indisponibles" "Text" "Nous ne pouvons pas charger les nouveautés pour le moment."}}
+    {{end}}
+  </section>
+
+  <!-- MEILLEURES VENTES -->
+  {{if .BestSellers}}
+  <section class="section container">
+    <div class="section__header">
+      <h2 class="section__title">Meilleures ventes</h2>
+      <a href="/category/bestsellers" class="section__link" up-follow>Voir tout &rarr;</a>
+    </div>
+    <div class="grid-4">
+      {{range .BestSellers}}
+      {{template "product-card" .}}
+      {{end}}
+    </div>
+  </section>
+  {{end}}
+
+  <!-- PROMO BANNER -->
+  <div class="container">
+    <div class="promo-banner">
+      <h2 class="promo-banner__title">Première commande ?</h2>
+      <p class="promo-banner__text">Inscrivez-vous à notre newsletter et bénéficiez de <strong>-10%</strong> sur votre première commande.</p>
+      <form class="form-group u-flex u-gap-2 u-max-w-400 u-mx-auto" action="/api/newsletter" method="post" up-submit>
+        <label for="promo-email" class="sr-only">Votre adresse email</label>
+        <input type="email" id="promo-email" name="email" class="form-input u-flex-1" placeholder="votre@email.com" autocomplete="email" required>
+        <button type="submit" class="btn btn--primary">Je m'inscris</button>
+      </form>
+    </div>
+  </div>
+
+{{end}}

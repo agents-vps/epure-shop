@@ -1,0 +1,37 @@
+{{define "checkout"}}<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{block "title" .}}Finaliser la commande — Épure{{end}}</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/static/css/tokens.css">
+<link rel="stylesheet" href="/static/css/base.css">
+<link rel="stylesheet" href="/static/css/components.css">
+<link rel="stylesheet" href="/static/css/utilities.css">
+<link rel="stylesheet" href="/static/css/shop.css">
+<script src="/static/vendor/unpoly.min.js"></script>
+<link rel="stylesheet" href="/static/vendor/unpoly.min.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Aller au contenu</a>
+
+<!-- REDUCED HEADER -->
+<header class="checkout-header" role="banner">
+  <div class="container">
+    <a href="/" class="shop-header__logo" aria-label="Épure — Accueil" up-follow>Épure</a>
+    <p class="u-mt-2 u-text-xs u-text-muted">
+      <svg class="u-align-middle" width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M3 6h14M7 2v4M13 2v4"/></svg>
+      Paiement 100% sécurisé
+    </p>
+  </div>
+</header>
+
+{{block "content" .}}{{end}}
+
+<script src="/static/js/ui.js"></script>
+<script src="/static/js/shop.js"></script>
+</body>
+</html>
+{{end}}

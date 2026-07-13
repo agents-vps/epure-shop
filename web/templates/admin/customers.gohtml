@@ -1,0 +1,42 @@
+{{define "title"}}Clients — Administration Épure{{end}}
+{{define "content"}}
+
+  <div class="admin-content__header">
+    <h1 class="admin-content__title">Clients</h1>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Email</th>
+          <th>Commandes</th>
+          <th>Inscription</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Users}}
+        <tr>
+          <td>
+            <div class="u-flex u-items-center u-gap-3">
+              <div class="u-img-40x40 u-radius-full u-bg-accent-light u-flex u-items-center u-justify-center u-text-sm u-fw-semibold">{{slice .Name 0 2 | upper}}</div>
+              <strong>{{.Name}}</strong>
+            </div>
+          </td>
+          <td>{{.Email}}</td>
+          <td>{{.OrderCount}}</td>
+          <td>{{date .CreatedAt}}</td>
+          <td>
+            <a href="/admin/customers/{{.ID}}" class="btn btn--ghost btn--sm" up-follow>Voir</a>
+          </td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+
+  {{template "pagination" .Pagination}}
+
+{{end}}

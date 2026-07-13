@@ -1,0 +1,44 @@
+{{define "title"}}Commandes — Administration Épure{{end}}
+{{define "content"}}
+
+  <div class="admin-content__header">
+    <h1 class="admin-content__title">Commandes</h1>
+    <div class="admin-content__actions">
+      <button class="btn btn--secondary btn--sm">Export CSV</button>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><input type="checkbox" class="checkbox__input" aria-label="Tout sélectionner"></th>
+          <th>N° commande</th>
+          <th>Client</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Orders}}
+        <tr>
+          <td><input type="checkbox" class="checkbox__input" aria-label="Sélectionner la commande {{.Ref}}"></td>
+          <td><a href="/admin/orders/{{.ID}}" up-follow><strong>#{{.Ref}}</strong></a></td>
+          <td>{{.CustomerName}}</td>
+          <td>{{date .CreatedAt}}</td>
+          <td>{{money .Total}}</td>
+          <td><span class="badge badge--{{.StatusBadge}}">{{.Status}}</span></td>
+          <td>
+            <a href="/admin/orders/{{.ID}}" class="btn btn--ghost btn--sm" up-follow>Voir</a>
+          </td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+
+  {{template "pagination" .Pagination}}
+
+{{end}}

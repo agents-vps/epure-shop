@@ -1,0 +1,101 @@
+{{define "title"}}Tableau de bord — Administration Épure{{end}}
+{{define "content"}}
+
+  <div class="admin-content__header">
+    <h1 class="admin-content__title">Tableau de bord</h1>
+    <div class="admin-content__actions">
+      <button class="btn btn--secondary btn--sm">Export CSV</button>
+      <a href="/admin/products/new" class="btn btn--primary btn--sm" up-follow>Nouveau produit</a>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <p class="kpi-card__label">Chiffre d'affaires</p>
+      <p class="kpi-card__value">{{money .Revenue}}</p>
+      <p class="kpi-card__change kpi-card__change--up">+12,5% vs mois dernier</p>
+    </div>
+    <div class="kpi-card">
+      <p class="kpi-card__label">Commandes</p>
+      <p class="kpi-card__value">{{.OrderCount}}</p>
+      <p class="kpi-card__change kpi-card__change--up">+8,3% vs mois dernier</p>
+    </div>
+    <div class="kpi-card">
+      <p class="kpi-card__label">Panier moyen</p>
+      <p class="kpi-card__value">{{money .AverageOrder}}</p>
+      <p class="kpi-card__change kpi-card__change--down">-2,1% vs mois dernier</p>
+    </div>
+    <div class="kpi-card">
+      <p class="kpi-card__label">Visiteurs</p>
+      <p class="kpi-card__value">{{.VisitorCount}}</p>
+      <p class="kpi-card__change kpi-card__change--up">+18,7% vs mois dernier</p>
+    </div>
+  </div>
+
+  <div class="chart-area">
+    <h2 class="chart-area__title">Évolution du CA — 30 derniers jours</h2>
+    <div class="chart-area__placeholder">Graphique des ventes (chargé dynamiquement)</div>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="dashboard-card">
+      <div class="dashboard-card__header">
+        <h2 class="dashboard-card__title">Commandes récentes</h2>
+        <a href="/admin/orders" class="btn btn--ghost btn--sm" up-follow>Voir tout</a>
+      </div>
+      <div class="dashboard-card__body">
+        <table class="table">
+          <thead>
+            <tr><th>Commande</th><th>Client</th><th>Date</th><th>Total</th><th>Statut</th></tr>
+          </thead>
+          <tbody>
+            {{range .RecentOrders}}
+            <tr>
+              <td><a href="/admin/orders/{{.ID}}" up-follow><strong>#{{.Ref}}</strong></a></td>
+              <td>{{.CustomerName}}</td>
+              <td>{{date .CreatedAt}}</td>
+              <td>{{money .Total}}</td>
+              <td><span class="badge badge--{{.StatusBadge}}">{{.Status}}</span></td>
+            </tr>
+            {{end}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="u-flex u-flex-col u-gap-8">
+      <div class="dashboard-card">
+        <div class="dashboard-card__header"><h2 class="dashboard-card__title">Meilleures ventes</h2></div>
+        <div class="dashboard-card__body">
+          <table class="table">
+            <tbody>
+              {{range $i, $p := .BestSellers}}
+              <tr>
+                <td class="u-fw-semibold">{{add $i 1}}</td>
+                <td>{{$p.Name}}</td>
+                <td class="u-text-right u-text-muted">{{$p.SalesCount}} ventes</td>
+              </tr>
+              {{end}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="dashboard-card__header"><h2 class="dashboard-card__title">Alertes stock bas</h2></div>
+        <div class="dashboard-card__body">
+          <div class="low-stock-list">
+            {{range .LowStockProducts}}
+            <div class="low-stock-item">
+              <span class="low-stock-item__name">{{.Name}}</span>
+              <span class="low-stock-item__qty">{{.Stock}} restant{{if ne .Stock 1}}s{{end}}</span>
+            </div>
+            {{end}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{end}}

@@ -1,0 +1,46 @@
+{{define "title"}}Page introuvable — Épure{{end}}
+{{define "content"}}
+  <div class="container">
+    <article class="page-404">
+      <p class="page-404__code" aria-hidden="true">404</p>
+      <h1>Page introuvable</h1>
+
+      <p class="u-mb-8 u-max-w-480 u-text-lg u-text-muted u-mx-auto">
+        La page que vous cherchez n'existe pas ou a été déplacée. Peut-être souhaitez-vous explorer nos collections ?
+      </p>
+
+      <div class="u-flex u-flex-wrap u-justify-center u-gap-4">
+        <a href="/" class="btn btn--primary" up-follow>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5l-7 7 7 7"/></svg>
+          Retour à l'accueil
+        </a>
+        {{range .Categories}}
+        <a href="/category/{{.Slug}}" class="btn btn--secondary" up-follow>{{.Name}}</a>
+        {{end}}
+        <a href="/search" class="btn btn--ghost" up-follow>Rechercher</a>
+      </div>
+
+      <div class="u-grid u-gap-6 u-grid-cols-3 u-text-left u-mt-8">
+        <div>
+          <h3 class="u-mb-3 u-text-sm u-fw-semibold u-text-muted">Collections</h3>
+          {{range .Categories}}
+          <a href="/category/{{.Slug}}" class="shop-footer__link" up-follow>{{.Name}}</a>
+          {{end}}
+        </div>
+        <div>
+          <h3 class="u-mb-3 u-text-sm u-fw-semibold u-text-muted">Aide</h3>
+          <a href="/contact" class="shop-footer__link" up-follow>Contact</a>
+          <a href="/faq" class="shop-footer__link" up-follow>FAQ</a>
+          <a href="/shipping" class="shop-footer__link" up-follow>Livraison & retours</a>
+          <a href="/size-guide" class="shop-footer__link" up-follow>Guide des tailles</a>
+        </div>
+        <div>
+          <h3 class="u-mb-3 u-text-sm u-fw-semibold u-text-muted">Compte</h3>
+          <a href="/login" class="shop-footer__link" up-follow>Connexion</a>
+          <a href="/register" class="shop-footer__link" up-follow>Créer un compte</a>
+          <a href="/account" class="shop-footer__link" up-follow>Mon compte</a>
+        </div>
+      </div>
+    </article>
+  </div>
+{{end}}

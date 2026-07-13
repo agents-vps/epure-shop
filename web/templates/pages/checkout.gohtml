@@ -1,0 +1,140 @@
+{{define "title"}}Finaliser la commande — Épure{{end}}
+{{define "content"}}
+
+  <!-- STEPPER -->
+  <nav class="checkout-stepper" aria-label="Étapes de la commande" data-component="checkout-stepper">
+    <div class="checkout-step checkout-step--active">
+      <span class="checkout-step__number" aria-hidden="true">1</span>
+      <span>Livraison</span>
+    </div>
+    <span class="checkout-step__sep" aria-hidden="true"></span>
+    <div class="checkout-step">
+      <span class="checkout-step__number" aria-hidden="true">2</span>
+      <span>Paiement</span>
+    </div>
+    <span class="checkout-step__sep" aria-hidden="true"></span>
+    <div class="checkout-step">
+      <span class="checkout-step__number" aria-hidden="true">3</span>
+      <span>Confirmation</span>
+    </div>
+  </nav>
+
+  <h1 class="sr-only">Finaliser la commande — Livraison</h1>
+
+  <div class="container">
+    <form class="checkout-layout" action="/api/checkout" method="POST" up-submit novalidate>
+
+      <!-- LEFT: Shipping -->
+      <div class="checkout-main">
+        <section class="checkout-section">
+          <h2 class="checkout-section__title">Coordonnées</h2>
+          <div class="u-grid u-gap-4 u-grid-cols-2">
+            <div class="form-group">
+              <label class="form-label" for="checkout-firstname">Prénom</label>
+              <input type="text" id="checkout-firstname" name="firstname" class="form-input" required autocomplete="given-name" value="{{.Form.Firstname}}">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkout-lastname">Nom</label>
+              <input type="text" id="checkout-lastname" name="lastname" class="form-input" required autocomplete="family-name" value="{{.Form.Lastname}}">
+            </div>
+          </div>
+          <div class="form-group u-mt-4">
+            <label class="form-label" for="checkout-email">Email</label>
+            <input type="email" id="checkout-email" name="email" class="form-input" required autocomplete="email" placeholder="vous@exemple.com" value="{{.Form.Email}}">
+          </div>
+          <div class="form-group u-mt-4">
+            <label class="form-label" for="checkout-phone">Téléphone</label>
+            <input type="tel" id="checkout-phone" name="phone" class="form-input" required autocomplete="tel" placeholder="06 12 34 56 78" value="{{.Form.Phone}}">
+            <span class="form-hint">Pour les informations de livraison uniquement.</span>
+          </div>
+        </section>
+
+        <section class="checkout-section">
+          <h2 class="checkout-section__title">Adresse de livraison</h2>
+          <div class="form-group">
+            <label class="form-label" for="checkout-address">Adresse</label>
+            <input type="text" id="checkout-address" name="address" class="form-input" required autocomplete="shipping street-address" placeholder="123 rue de la Céramique" value="{{.Form.Address}}">
+          </div>
+          <div class="u-grid u-gap-4 u-grid-cols-2-1 u-mt-4">
+            <div class="form-group">
+              <label class="form-label" for="checkout-city">Ville</label>
+              <input type="text" id="checkout-city" name="city" class="form-input" required autocomplete="shipping locality" value="{{.Form.City}}">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkout-postcode">Code postal</label>
+              <input type="text" id="checkout-postcode" name="postcode" class="form-input" required autocomplete="shipping postal-code" pattern="[0-9]{5}" placeholder="75001" value="{{.Form.Postcode}}">
+            </div>
+          </div>
+          <div class="form-group u-mt-4">
+            <label class="form-label" for="checkout-country">Pays</label>
+            <select id="checkout-country" name="country" class="form-select" required autocomplete="shipping country-name">
+              <option value="">Sélectionner un pays</option>
+              <option value="FR"{{if eq .Form.Country "FR"}} selected{{end}}>France</option>
+              <option value="BE"{{if eq .Form.Country "BE"}} selected{{end}}>Belgique</option>
+              <option value="CH"{{if eq .Form.Country "CH"}} selected{{end}}>Suisse</option>
+              <option value="LU"{{if eq .Form.Country "LU"}} selected{{end}}>Luxembourg</option>
+              <option value="DE"{{if eq .Form.Country "DE"}} selected{{end}}>Allemagne</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="checkout-section">
+          <h2 class="checkout-section__title">Mode de livraison</h2>
+          <div class="u-flex u-flex-col u-gap-3">
+            {{range .DeliveryMethods}}
+            <label class="delivery-option u-flex u-items-start u-gap-4{{if .Selected}} u-bg-accent-surface{{end}} u-radius-md" style="padding:var(--space-4); border:1.5px solid {{if .Selected}}var(--color-accent){{else}}var(--color-border){{end}}; cursor:pointer">
+              <input type="radio" name="delivery" value="{{.Value}}" class="radio__input u-mt-1"{{if .Selected}} checked{{end}}>
+              <div>
+                <p class="u-text-sm u-fw-semibold">{{.Name}}</p>
+                <p class="u-text-xs u-text-muted">{{.Description}}</p>
+              </div>
+              <span class="u-text-sm u-fw-medium u-whitespace-nowrap u-ml-auto">{{money .Price}}</span>
+            </label>
+            {{end}}
+          </div>
+        </section>
+
+        <div class="u-flex u-items-center u-justify-between u-mt-4">
+          <a href="/cart" class="btn btn--ghost u-text-sm" up-follow>
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5l-7 7 7 7"/></svg>
+            Retour au panier
+          </a>
+          <button type="submit" class="btn btn--primary btn--lg">
+            Paiement
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT: Order Summary -->
+      <aside class="cart-summary">
+        <h2 class="checkout-section__title u-mb-4 u-text-xl">Récapitulatif</h2>
+
+        {{range .Cart.Items}}
+        <div class="u-flex u-gap-3 u-mb-4 u-pb-4 u-border-b">
+          <div class="u-flex-shrink-0 u-bg-border-light u-radius-sm u-img-64x80">
+            {{if .Product.ImageURL}}<img class="u-w-full u-radius-sm u-h-full u-object-cover" src="{{.Product.ImageURL}}" alt="{{.Product.Name}}">{{else}}<div class="u-flex u-items-center u-justify-center u-w-full u-h-full u-text-xs u-text-muted">{{.Product.Name}}</div>{{end}}
+          </div>
+          <div class="u-flex-1 u-w-0">
+            <p class="u-text-sm u-fw-medium">{{.Product.Name}}</p>
+            <p class="u-text-xs u-text-muted">Qté : {{.Quantity}}</p>
+          </div>
+          <span class="u-text-sm u-fw-semibold u-whitespace-nowrap">{{money .Product.Price}}</span>
+        </div>
+        {{end}}
+
+        <div class="promo-code" data-component="promo-code">
+          <input type="text" class="form-input u-text-sm" placeholder="Code promo" aria-label="Code promotionnel">
+          <button type="button" class="btn btn--secondary btn--sm" data-action="apply-promo">Appliquer</button>
+        </div>
+
+        <div class="cart-summary__row"><span>Sous-total</span><span>{{money .Cart.Subtotal}}</span></div>
+        <div class="cart-summary__row"><span>Livraison</span><span>{{money .Cart.ShippingCost}}</span></div>
+        {{if .Cart.Discount}}<div class="cart-summary__row"><span>Réduction</span><span class="u-text-error">−{{money .Cart.DiscountAmount}}</span></div>{{end}}
+        <div class="cart-summary__row cart-summary__row--total"><span>Total</span><span>{{money .Cart.Total}}</span></div>
+
+        <p class="u-mt-3 u-text-xs u-text-center u-text-muted">TVA incluse (20%). Paiement sécurisé.</p>
+      </aside>
+    </form>
+  </div>
+{{end}}

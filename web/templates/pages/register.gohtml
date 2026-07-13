@@ -1,0 +1,63 @@
+{{define "title"}}Créer un compte — Épure{{end}}
+{{define "content"}}
+  <div class="auth-card" data-component="register-form" data-endpoint="/api/auth/register">
+    <div class="auth-card__logo">
+      <a href="/" up-follow>Épure</a>
+    </div>
+
+    <h1 class="auth-card__title">Créer un compte</h1>
+    <p class="auth-card__subtitle">Rejoignez la communauté Épure.</p>
+
+    {{if .Error}}
+    <div class="u-flex u-items-center u-gap-2 u-mb-6 u-bg-error-light u-radius-sm" style="padding:var(--space-3)">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="var(--color-error)" stroke-width="1.5"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg>
+      <p class="u-text-sm u-fw-medium u-text-error">{{.Error}}</p>
+    </div>
+    {{end}}
+
+    <form action="/register" method="POST" up-submit novalidate>
+      <div class="u-grid u-gap-4 u-grid-cols-2 u-mb-4">
+        <div class="form-group">
+          <label class="form-label" for="register-firstname">Prénom</label>
+          <input type="text" id="register-firstname" name="firstname" class="form-input" required autocomplete="given-name" value="{{.Firstname}}">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="register-lastname">Nom</label>
+          <input type="text" id="register-lastname" name="lastname" class="form-input" required autocomplete="family-name" value="{{.Lastname}}">
+        </div>
+      </div>
+
+      <div class="form-group u-mb-4">
+        <label class="form-label" for="register-email">Email</label>
+        <input type="email" id="register-email" name="email" class="form-input" required autocomplete="email" placeholder="vous@exemple.com" value="{{.Email}}">
+      </div>
+
+      <div class="form-group u-mb-4">
+        <label class="form-label" for="register-password">Mot de passe</label>
+        <div class="u-relative">
+          <input type="password" id="register-password" name="password" class="form-input" required autocomplete="new-password" placeholder="Minimum 8 caractères" minlength="8">
+          <button type="button" class="password-toggle u-text-muted" data-action="toggle-password" data-target="register-password" aria-label="Afficher le mot de passe">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4C4 4 1 10 1 10s3 6 9 6 9-6 9-6-3-6-9-6z"/><circle cx="10" cy="10" r="3"/></svg>
+          </button>
+        </div>
+        <span class="form-hint">8 caractères minimum, incluant une majuscule et un chiffre.</span>
+      </div>
+
+      <div class="form-group u-mb-6">
+        <label class="form-label" for="register-confirm-password">Confirmer le mot de passe</label>
+        <input type="password" id="register-confirm-password" name="confirm_password" class="form-input" required autocomplete="new-password" placeholder="Répétez votre mot de passe" minlength="8">
+      </div>
+
+      <label class="checkbox u-mb-6">
+        <input type="checkbox" class="checkbox__input" name="terms" required>
+        <span class="u-text-sm">J'accepte les <a href="/terms" up-follow>conditions générales</a> et la <a href="/privacy" up-follow>politique de confidentialité</a>.</span>
+      </label>
+
+      <button type="submit" class="btn btn--primary u-w-full">Créer mon compte</button>
+    </form>
+
+    <div class="auth-card__footer">
+      <p>Déjà un compte&nbsp;? <a href="/login" up-follow>Se connecter</a></p>
+    </div>
+  </div>
+{{end}}

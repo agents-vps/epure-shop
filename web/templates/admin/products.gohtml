@@ -1,0 +1,49 @@
+{{define "title"}}Produits — Administration Épure{{end}}
+{{define "content"}}
+
+  <div class="admin-content__header">
+    <h1 class="admin-content__title">Produits</h1>
+    <div class="admin-content__actions">
+      <a href="/admin/products/new" class="btn btn--primary btn--sm" up-follow>+ Nouveau produit</a>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><input type="checkbox" class="checkbox__input" aria-label="Tout sélectionner"></th>
+          <th>Produit</th>
+          <th>Catégorie</th>
+          <th>Prix</th>
+          <th>Stock</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Products}}
+        <tr>
+          <td><input type="checkbox" class="checkbox__input" aria-label="Sélectionner {{.Name}}"></td>
+          <td>
+            <div class="u-flex u-items-center u-gap-3">
+              {{if .ImageURL}}<img src="{{.ImageURL}}" alt="{{.Name}}" class="u-img-40x40 u-radius-sm">{{else}}<div class="u-img-40x40 u-radius-sm u-bg-border-light u-flex u-items-center u-justify-center u-text-xs u-text-muted">{{.Name}}</div>{{end}}
+              <strong>{{.Name}}</strong>
+            </div>
+          </td>
+          <td>{{.CategoryName}}</td>
+          <td>{{money .Price}}</td>
+          <td>{{.Stock}}</td>
+          <td><span class="badge badge--{{if eq .Status "published"}}success{{else}}neutral{{end}}">{{.Status}}</span></td>
+          <td>
+            <a href="/admin/products/{{.ID}}/edit" class="btn btn--ghost btn--sm" up-follow>Modifier</a>
+          </td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+
+  {{template "pagination" .Pagination}}
+
+{{end}}

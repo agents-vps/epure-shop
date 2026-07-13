@@ -1,0 +1,9 @@
+{{define "empty-state"}}
+<div class="empty-state">
+  {{if .Icon}}<svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="{{.IconColor | default "var(--color-ink-subtle)"}}" stroke-width="1.5" aria-hidden="true">{{.Icon}}</svg>{{end}}
+  <h4 class="empty-state__title">{{.Title}}</h4>
+  <p class="empty-state__text">{{.Text}}</p>
+  {{if .ActionURL}}<a href="{{.ActionURL}}" class="btn btn--primary" up-follow>{{.ActionLabel}}</a>{{end}}
+  {{if .ActionButton}}<button class="btn btn--primary" {{range $k, $v := .ActionAttrs}}{{$k}}="{{$v}}" {{end}}>{{.ActionLabel}}</button>{{end}}
+</div>
+{{end}}

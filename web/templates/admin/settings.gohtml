@@ -1,0 +1,49 @@
+{{define "title"}}Paramètres — Administration Épure{{end}}
+{{define "content"}}
+
+  <div class="admin-content__header">
+    <h1 class="admin-content__title">Paramètres</h1>
+  </div>
+
+  <div class="u-max-w-520">
+    <form action="/admin/settings" method="POST" up-submit novalidate>
+
+      <h2 class="u-mb-4 u-text-xl">Informations boutique</h2>
+      <div class="form-group u-mb-4">
+        <label class="form-label" for="settings-name">Nom de la boutique</label>
+        <input type="text" id="settings-name" name="store_name" class="form-input" value="{{.Settings.StoreName}}" required>
+      </div>
+      <div class="form-group u-mb-4">
+        <label class="form-label" for="settings-email">Email de contact</label>
+        <input type="email" id="settings-email" name="contact_email" class="form-input" value="{{.Settings.ContactEmail}}" required>
+      </div>
+
+      <hr class="u-border-t">
+
+      <h2 class="u-mb-4 u-text-xl">Livraison</h2>
+      <div class="form-group u-mb-4">
+        <label class="form-label" for="settings-shipping">Frais de livraison standard (centimes)</label>
+        <input type="number" id="settings-shipping" name="shipping_cost" class="form-input" min="0" value="{{.Settings.ShippingCost}}">
+      </div>
+      <div class="form-group u-mb-4">
+        <label class="form-label" for="settings-free-shipping">Livraison gratuite à partir de (centimes)</label>
+        <input type="number" id="settings-free-shipping" name="free_shipping_threshold" class="form-input" min="0" value="{{.Settings.FreeShippingThreshold}}">
+      </div>
+
+      <hr class="u-border-t">
+
+      <h2 class="u-mb-4 u-text-xl">SEO</h2>
+      <div class="form-group u-mb-4">
+        <label class="form-label" for="settings-meta-title">Meta title par défaut</label>
+        <input type="text" id="settings-meta-title" name="meta_title" class="form-input" value="{{.Settings.MetaTitle}}">
+      </div>
+      <div class="form-group u-mb-4">
+        <label class="form-label" for="settings-meta-desc">Meta description</label>
+        <textarea id="settings-meta-desc" name="meta_description" class="form-input" rows="3">{{.Settings.MetaDescription}}</textarea>
+      </div>
+
+      <button type="submit" class="btn btn--primary">Enregistrer les paramètres</button>
+    </form>
+  </div>
+
+{{end}}

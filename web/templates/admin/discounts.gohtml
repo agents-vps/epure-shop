@@ -1,0 +1,39 @@
+{{define "title"}}Réductions — Administration Épure{{end}}
+{{define "content"}}
+
+  <div class="admin-content__header">
+    <h1 class="admin-content__title">Réductions</h1>
+    <div class="admin-content__actions">
+      <button class="btn btn--primary btn--sm" data-action="add-discount">+ Nouvelle réduction</button>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Réduction</th>
+          <th>Expiration</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Discounts}}
+        <tr>
+          <td><code class="u-fw-semibold">{{.Code}}</code></td>
+          <td>{{.Percent}}%</td>
+          <td>{{if .ExpiresAt}}{{date .ExpiresAt}}{{else}}—{{end}}</td>
+          <td><span class="badge badge--{{if .Active}}success{{else}}neutral{{end}}">{{if .Active}}Actif{{else}}Inactif{{end}}</span></td>
+          <td>
+            <button class="btn btn--ghost btn--sm" data-action="toggle-discount" data-id="{{.ID}}">{{if .Active}}Désactiver{{else}}Activer{{end}}</button>
+            <button class="btn btn--ghost btn--sm u-text-error" data-action="delete-discount" data-id="{{.ID}}">Supprimer</button>
+          </td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+
+{{end}}

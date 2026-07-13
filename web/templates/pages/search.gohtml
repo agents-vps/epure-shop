@@ -1,0 +1,39 @@
+{{define "title"}}Résultats pour "{{.Query}}" — Épure{{end}}
+{{define "content"}}
+  <div class="container">
+
+    {{template "breadcrumb" dict "Breadcrumbs" .Breadcrumbs}}
+
+    <div class="search-results__header">
+      <h1>Résultats pour «&nbsp;<span class="search-results__query">{{.Query}}</span>&nbsp;»</h1>
+      <p class="category-count u-mt-1">
+        <span>{{.TotalCount}}</span> résultat{{if ne .TotalCount 1}}s{{end}} trouvé{{if ne .TotalCount 1}}s{{end}}
+      </p>
+    </div>
+
+    <div class="category-toolbar">
+      <div class="category-count">
+        Affichage de <span>{{.ShowingStart}}</span>–<span>{{.ShowingEnd}}</span> sur <span>{{.TotalCount}}</span>
+      </div>
+      <form class="form-group" up-submit up-target="main">
+        <select class="form-select" aria-label="Trier par" name="sort">
+          <option value="relevance"{{if eq .Sort "relevance"}} selected{{end}}>Pertinence</option>
+          <option value="price-asc"{{if eq .Sort "price-asc"}} selected{{end}}>Prix croissant</option>
+          <option value="price-desc"{{if eq .Sort "price-desc"}} selected{{end}}>Prix décroissant</option>
+          <option value="newest"{{if eq .Sort "newest"}} selected{{end}}>Nouveautés</option>
+        </select>
+      </form>
+    </div>
+
+    {{if .Products}}
+    <div class="grid-3">
+      {{range .Products}}
+      {{template "product-card" .}}
+      {{end}}
+    </div>
+    {{template "pagination" .Pagination}}
+    {{else}}
+    {{template "empty-state" dict "Title" (printf "Aucun résultat pour « %s »" .Query) "Text" "Essayez avec des termes plus généraux ou vérifiez l'orthographe."}}
+    {{end}}
+  </div>
+{{end}}

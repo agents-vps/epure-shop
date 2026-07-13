@@ -1,0 +1,28 @@
+{{define "cart-item"}}
+<tr class="cart-item" data-component="cart-item" data-product-id="{{.ProductID}}">
+  <td>
+    <div class="cart-item__product">
+      <div class="cart-item__image u-flex u-items-center u-justify-center u-text-subtle u-text-xs" style="background:oklch(85% 0.04 245)">
+        {{if .Product.ImageURL}}<img src="{{.Product.ImageURL}}" alt="{{.Product.Name}}" class="u-w-full u-h-full u-object-cover">{{else}}<span>{{.Product.Name}}</span>{{end}}
+      </div>
+      <div>
+        <a href="/product/{{.Product.Slug}}" class="cart-item__name" up-follow>{{.Product.Name}}</a>
+        <p class="cart-item__variant">{{.Product.CategoryName}} · Qté : {{.Quantity}}</p>
+      </div>
+    </div>
+  </td>
+  <td>
+    <div class="stepper" data-component="stepper">
+      <button class="stepper__btn" aria-label="Réduire la quantité" data-action="decrease" data-product-id="{{.ProductID}}">−</button>
+      <input type="number" class="stepper__input" value="{{.Quantity}}" min="1" max="99" aria-label="Quantité">
+      <button class="stepper__btn" aria-label="Augmenter la quantité" data-action="increase" data-product-id="{{.ProductID}}">+</button>
+    </div>
+  </td>
+  <td class="cart-item__price">{{money .Product.Price}}</td>
+  <td>
+    <button class="btn btn--icon btn--ghost" aria-label="Supprimer du panier" data-action="remove" data-product-id="{{.ProductID}}">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+  </td>
+</tr>
+{{end}}

@@ -1,0 +1,80 @@
+{{define "title"}}Panier — Épure{{end}}
+{{define "description"}}Votre panier Épure. Finalisez votre commande de pièces artisanales et design.{{end}}
+{{define "content"}}
+  <div class="container">
+
+    {{template "breadcrumb" dict "Breadcrumbs" .Breadcrumbs}}
+
+    <header class="u-pb-6">
+      <h1>Votre panier</h1>
+    </header>
+
+    {{if .Cart.Items}}
+    <div class="cart-layout">
+      <div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="u-w-50">Produit</th>
+                <th>Quantité</th>
+                <th class="u-text-right">Prix</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {{range .Cart.Items}}
+              {{template "cart-item" .}}
+              {{end}}
+            </tbody>
+          </table>
+        </div>
+        <div class="u-pt-6">
+          <a href="/" class="btn btn--ghost" up-follow>&larr; Continuer mes achats</a>
+        </div>
+      </div>
+
+      <aside>
+        <div class="cart-summary" data-component="cart-summary">
+          <div class="promo-code" data-component="promo-code">
+            <label for="promo-input" class="sr-only">Code promo</label>
+            <input type="text" id="promo-input" class="form-input u-flex-1" placeholder="Code promo" data-promo-input autocomplete="off">
+            <button class="btn btn--secondary btn--sm" data-promo-apply>Appliquer</button>
+          </div>
+          <p class="u-none u-mb-4 u-text-xs u-text-muted" data-promo-feedback></p>
+
+          <div class="cart-summary__row">
+            <span>Sous-total</span>
+            <span>{{money .Cart.Subtotal}}</span>
+          </div>
+          <div class="cart-summary__row">
+            <span>Livraison</span>
+            <span class="u-text-success">{{if .Cart.FreeShipping}}Gratuite{{else}}{{money .Cart.ShippingCost}}{{end}}</span>
+          </div>
+          {{if .Cart.Discount}}
+          <div class="cart-summary__row">
+            <span>Réduction ({{.Cart.Discount.Code}})</span>
+            <span class="u-text-error">−{{money .Cart.DiscountAmount}}</span>
+            <button class="btn btn--icon btn--ghost" aria-label="Supprimer le code promo">&#x2715;</button>
+          </div>
+          {{end}}
+          <div class="cart-summary__row cart-summary__row--total">
+            <span>Total</span>
+            <span>{{money .Cart.Total}}</span>
+          </div>
+
+          <a href="/checkout" class="btn btn--primary cart-summary__btn btn--lg" up-follow>
+            Passer commande · {{money .Cart.Total}}
+          </a>
+
+          <p class="u-mt-4 u-text-xs u-text-center u-text-muted">
+            Paiement 100% sécurisé · Livraison neutre en carbone
+          </p>
+        </div>
+      </aside>
+    </div>
+    {{else}}
+    {{template "empty-state" dict "Title" "Votre panier est vide" "Text" "Parcourez nos catégories pour découvrir des pièces uniques qui transformeront votre intérieur." "ActionURL" "/" "ActionLabel" "Explorer les catégories"}}
+    {{end}}
+  </div>
+{{end}}

@@ -1,0 +1,89 @@
+{{define "title"}}{{.Category.Name}} — Épure{{end}}
+{{define "description"}}Découvrez notre collection {{.Category.Name | lower}} artisanale.{{end}}
+{{define "content"}}
+  <div class="container">
+
+    {{template "breadcrumb" dict "Breadcrumbs" .Breadcrumbs}}
+
+    <header class="u-pb-6">
+      <h1>{{.Category.Name}}</h1>
+      <p class="u-mt-2 u-max-w-600 u-text-muted">{{.Category.Description}}</p>
+    </header>
+
+    <div class="u-pb-4">
+      <button class="filter-toggle" data-action="open-mobile-filters" data-target="filter-sidebar" aria-expanded="false">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M3 5h14M3 10h14M3 15h10"/>
+        </svg>
+        Filtres
+      </button>
+    </div>
+
+    <div class="category-layout">
+
+      <!-- FILTER SIDEBAR -->
+      <aside class="filter-sidebar" id="filter-sidebar" data-component="filters" role="search" aria-label="Filtres">
+        <div class="filter-sidebar__mobile-header u-none u-items-center u-justify-between u-pb-4">
+          <span class="u-fw-semibold">Filtres</span>
+          <button class="btn btn--icon btn--ghost" data-action="close-mobile-filters" data-target="filter-sidebar" aria-label="Fermer les filtres">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+          </button>
+        </div>
+
+        <form up-submit up-target=".category-layout" action="/category/{{.Category.Slug}}">
+          <div class="accordion" data-component="accordion">
+            <div class="accordion__item">
+              <button type="button" class="accordion__trigger filter-group__title" aria-expanded="true" data-action="toggle-accordion" data-target="#filter-price">
+                <span>Prix</span>
+                <svg class="accordion__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+              </button>
+              <div class="accordion__panel" id="filter-price" data-state="open">
+                <div class="accordion__panel-inner">
+                  <div class="range-slider u-mb-3">
+                    <label for="filter-price-min" class="sr-only">Prix minimum</label>
+                    <input type="range" id="filter-price-min" name="price_min" min="0" max="500" value="{{.Filters.PriceMin}}" aria-label="Prix minimum">
+                    <label for="filter-price-max" class="sr-only">Prix maximum</label>
+                    <input type="range" id="filter-price-max" name="price_max" min="0" max="500" value="{{.Filters.PriceMax}}" aria-label="Prix maximum">
+                  </div>
+                  <div class="u-flex u-justify-between u-text-xs u-text-muted">
+                    <span>0 €</span><span>500 €</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <button class="btn btn--ghost btn--sm u-mt-2 u-w-full" data-action="reset-filters">Réinitialiser les filtres</button>
+      </aside>
+
+      <!-- PRODUCT GRID -->
+      <div>
+        <div class="category-toolbar">
+          <p class="category-count">{{.TotalCount}} produit{{if ne .TotalCount 1}}s{{end}}</p>
+          <form class="form-group u-flex u-items-center u-gap-3" up-submit up-target=".category-layout">
+            <label for="filter-sort" class="sr-only">Trier par</label>
+            <select id="filter-sort" name="sort" class="form-select">
+              <option value="relevance"{{if eq .Sort "relevance"}} selected{{end}}>Pertinence</option>
+              <option value="price-asc"{{if eq .Sort "price-asc"}} selected{{end}}>Prix croissant</option>
+              <option value="price-desc"{{if eq .Sort "price-desc"}} selected{{end}}>Prix décroissant</option>
+              <option value="newest"{{if eq .Sort "newest"}} selected{{end}}>Nouveautés</option>
+              <option value="rating"{{if eq .Sort "rating"}} selected{{end}}>Meilleures notes</option>
+            </select>
+          </form>
+        </div>
+
+        {{if .Products}}
+        <div class="grid-3">
+          {{range .Products}}
+          {{template "product-card" .}}
+          {{end}}
+        </div>
+        {{template "pagination" .Pagination}}
+        {{else}}
+        {{template "empty-state" dict "Title" "Aucun produit trouvé" "Text" "Essayez de modifier vos filtres ou d'élargir votre recherche."}}
+        {{end}}
+      </div>
+    </div>
+  </div>
+{{end}}

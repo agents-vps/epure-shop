@@ -1,0 +1,28 @@
+{{define "auth"}}<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{block "title" .}}Connexion — Épure{{end}}</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/static/css/tokens.css">
+<link rel="stylesheet" href="/static/css/base.css">
+<link rel="stylesheet" href="/static/css/components.css">
+<link rel="stylesheet" href="/static/css/utilities.css">
+<link rel="stylesheet" href="/static/css/shop.css">
+<script src="/static/vendor/unpoly.min.js"></script>
+<link rel="stylesheet" href="/static/vendor/unpoly.min.css">
+</head>
+<body class="auth-page">
+
+<a href="#main" class="skip-link">Aller au contenu</a>
+
+<main id="main">
+{{block "content" .}}{{end}}
+</main>
+
+<script src="/static/js/ui.js"></script>
+<script src="/static/js/shop.js"></script>
+</body>
+</html>
+{{end}}

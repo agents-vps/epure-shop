@@ -1,0 +1,40 @@
+{{define "footer"}}
+<footer class="shop-footer" role="contentinfo">
+  <div class="container">
+    <div class="shop-footer__grid">
+      <div>
+        <h3 class="shop-footer__title">Épure</h3>
+        <p class="u-text-sm u-line-1-7 u-text-muted">
+          Boutique de pièces artisanales et design minimaliste. Chaque objet est sélectionné pour sa beauté intemporelle.
+        </p>
+      </div>
+      <div>
+        <h3 class="shop-footer__title">Boutique</h3>
+        {{range .Categories}}
+        <a href="/category/{{.Slug}}" class="shop-footer__link" up-follow>{{.Name}}</a>
+        {{end}}
+      </div>
+      <div>
+        <h3 class="shop-footer__title">Service client</h3>
+        <a href="/contact" class="shop-footer__link" up-follow>Contact</a>
+        <a href="/shipping" class="shop-footer__link" up-follow>Livraison & Retours</a>
+        <a href="/faq" class="shop-footer__link" up-follow>FAQ</a>
+        <a href="/size-guide" class="shop-footer__link" up-follow>Guide des tailles</a>
+      </div>
+      <div>
+        <h3 class="shop-footer__title">Newsletter</h3>
+        <p class="u-text-sm u-text-muted">Recevez nos inspirations et offres exclusives.</p>
+        <form class="shop-footer__newsletter-input" action="/api/newsletter" method="post" up-submit>
+          <label for="footer-email" class="sr-only">Votre adresse email</label>
+          <input type="email" id="footer-email" name="email" placeholder="votre@email.com" autocomplete="email" required>
+          <button type="submit" class="btn btn--primary btn--sm">OK</button>
+        </form>
+      </div>
+    </div>
+    <div class="shop-footer__bottom">
+      <span>&copy; 2026 Épure. Tous droits réservés.</span>
+      <span>Fait avec soin en France</span>
+    </div>
+  </div>
+</footer>
+{{end}}
