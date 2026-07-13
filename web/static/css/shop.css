@@ -262,6 +262,10 @@
   overflow: hidden;
 }
 
+.hero__image-bg {
+  background: linear-gradient(135deg, var(--color-accent-light), var(--color-surface));
+}
+
 /* ─── Sections ─── */
 .section {
   padding: var(--space-16) 0;

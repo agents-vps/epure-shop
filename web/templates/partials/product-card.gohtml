@@ -1,7 +1,7 @@
 {{define "product-card"}}
 <article class="product-card" data-component="product-card">
   <div class="product-card__image-wrapper">
-    <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4" style="background:oklch(85% 0.04 245)">
+    <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4 u-bg-placeholder">
       {{if .ImageURL}}<img src="{{.ImageURL}}" alt="{{.Name}}" class="u-w-full u-h-full u-object-cover">{{else}}<span class="u-text-subtle">{{.Name}}</span>{{end}}
     </div>
     <div class="product-card__actions">

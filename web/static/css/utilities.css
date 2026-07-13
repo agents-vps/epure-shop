@@ -15,6 +15,9 @@
 .u-aspect-4-3 { aspect-ratio: 4 / 3; }
 .u-aspect-1-1 { aspect-ratio: 1 / 1; }
 
+/* ─── Background placeholders ─── */
+.u-bg-placeholder { background: oklch(85% 0.04 245); }
+
 /* ─── Flex helpers ─── */
 .u-flex-col      { flex-direction: column; }
 .u-flex-wrap     { flex-wrap: wrap; }

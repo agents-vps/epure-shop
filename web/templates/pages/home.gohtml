@@ -10,7 +10,7 @@
       <a href="/category/nouveautes" class="btn btn--primary btn--lg" up-follow>Découvrir la collection</a>
     </div>
     <div class="hero__image" aria-hidden="true">
-      <div class="u-flex u-items-center u-justify-center u-w-full u-h-full" style="background:linear-gradient(135deg, var(--color-accent-light), var(--color-surface))">
+      <div class="u-flex u-items-center u-justify-center u-w-full u-h-full hero__image-bg">
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.5" aria-hidden="true">
           <path d="M40 10c-15 0-28 12-28 27s13 27 28 27 28-12 28-27-13-27-28-27z"/>
           <path d="M40 20c-8 0-16 7-16 17s8 17 16 17 16-7 16-17-8-17-16-17z"/>
@@ -50,7 +50,7 @@
       {{range .Categories}}
       <article>
         <a href="/category/{{.Slug}}" class="category-card" up-follow>
-          <div class="category-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle" style="background:oklch(85% 0.04 245)">{{.Name}}</div>
+          <div class="category-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-bg-placeholder">{{.Name}}</div>
           <div class="category-card__overlay">
             <h3 class="category-card__title">{{.Name}}</h3>
           </div>
