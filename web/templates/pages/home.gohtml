@@ -66,9 +66,9 @@
       <h2 class="section__title">Nouveautés</h2>
       <a href="/category/nouveautes" class="section__link" up-follow>Voir tout &rarr;</a>
     </div>
-    {{if .FeaturedProducts}}
+    {{if .NewProducts}}
     <div class="grid-4">
-      {{range .FeaturedProducts}}
+      {{range .NewProducts}}
       {{template "product-card" .}}
       {{end}}
     </div>
@@ -78,14 +78,14 @@
   </section>
 
   <!-- MEILLEURES VENTES -->
-  {{if .BestSellers}}
+  {{if .BestProducts}}
   <section class="section container">
     <div class="section__header">
       <h2 class="section__title">Meilleures ventes</h2>
       <a href="/category/bestsellers" class="section__link" up-follow>Voir tout &rarr;</a>
     </div>
     <div class="grid-4">
-      {{range .BestSellers}}
+      {{range .BestProducts}}
       {{template "product-card" .}}
       {{end}}
     </div>
