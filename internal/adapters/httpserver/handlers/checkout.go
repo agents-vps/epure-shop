@@ -100,10 +100,32 @@ func (h *CheckoutHandler) Confirmation(w http.ResponseWriter, r *http.Request) {
 	unpoly.Vary(w)
 
 	ref := r.PathValue("ref")
-	// Note: CheckoutService doesn't expose ByRef. We render a minimal
-	// confirmation page — the order reference is passed to the template.
+	order, err := h.checkoutSvc.GetOrder(r.Context(), ref)
+	if err != nil {
+		if errors.Is(err, service.ErrNotFound) {
+			h.renderer.RenderStatus(w, 404, "404", nil)
+			return
+		}
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
+
+	// IDOR check: ensure the requesting user owns this order
+	userID, loggedIn := middleware.UserIDFromContext(r.Context())
+	if loggedIn && order.UserID != nil && *order.UserID != userID {
+		// Not their order
+		h.renderer.RenderStatus(w, 404, "404", nil)
+		return
+	}
+	// If not logged in but the order has a user_id, still block
+	if !loggedIn && order.UserID != nil {
+		h.renderer.RenderStatus(w, 404, "404", nil)
+		return
+	}
+
 	h.renderer.Render(w, "order-confirmation", map[string]any{
-		"Ref": ref,
+		"Ref":   ref,
+		"Order": order,
 	})
 }
 

@@ -437,7 +437,16 @@ func (s *CheckoutService) PlaceOrder(ctx context.Context, token string, email st
 	return order, nil
 }
 
-// ─── Admin ───
+func (s *CheckoutService) GetOrder(ctx context.Context, ref string) (*domain.Order, error) {
+	order, err := s.orderRepo.ByRef(ctx, ref)
+	if err != nil {
+		return nil, fmt.Errorf("checkout: get order %q: %w", ref, err)
+	}
+	if order == nil {
+		return nil, ErrNotFound
+	}
+	return order, nil
+}
 
 type AdminService struct {
 	products   ports.ProductRepository
