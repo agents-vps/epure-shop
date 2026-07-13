@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page introuvable — Épure</title>
+  <meta name="description" content="La page que vous cherchez n'existe pas ou a été déplacée — Épure, boutique de céramique artisanale.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Aller au contenu</a>
+
+<!-- ═══ REDUCED HEADER ═══ -->
+<header class="checkout-header" role="banner">
+  <div class="container">
+    <a href="index.html" class="shop-header__logo" aria-label="Épure — Accueil">Épure</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <article class="page-404" data-component="page-404">
+      <p class="page-404__code" aria-hidden="true">404</p>
+      <h1>Page introuvable</h1>
+
+      <p class="u-mb-8 u-max-w-480 u-text-lg u-text-muted u-mx-auto" >
+        La page que vous cherchez n'existe pas ou a été déplacée. Peut-être souhaitez-vous explorer nos collections ?
+      </p>
+
+      <div class="u-flex u-flex-wrap u-justify-center u-gap-4" >
+        <a href="index.html" class="btn btn--primary">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5l-7 7 7 7"/></svg>
+          Retour à l'accueil
+        </a>
+        <a href="category.html?cat=ceramique" class="btn btn--secondary">Céramique</a>
+        <a href="category.html?cat=decoration" class="btn btn--secondary">Décoration</a>
+        <a href="search-results.html" class="btn btn--ghost">Rechercher</a>
+      </div>
+
+      <!-- Suggested links -->
+      <div class="u-grid u-gap-6 u-grid-cols-3 u-text-left u-mt-8"  data-slot="suggested-links">
+        <div>
+          <h3 class="u-mb-3 u-text-sm u-fw-semibold u-text-muted">Collections</h3>
+          <a href="category.html?cat=ceramique" class="shop-footer__link">Céramique artisanale</a>
+          <a href="category.html?cat=verre" class="shop-footer__link">Verre soufflé</a>
+          <a href="category.html?cat=textile" class="shop-footer__link">Textile</a>
+          <a href="category.html?cat=bois" class="shop-footer__link">Bois</a>
+        </div>
+        <div>
+          <h3 class="u-mb-3 u-text-sm u-fw-semibold u-text-muted">Aide</h3>
+          <a href="#" class="shop-footer__link">Contact</a>
+          <a href="#" class="shop-footer__link">FAQ</a>
+          <a href="#" class="shop-footer__link">Livraison & retours</a>
+          <a href="#" class="shop-footer__link">Guide des tailles</a>
+        </div>
+        <div>
+          <h3 class="u-mb-3 u-text-sm u-fw-semibold u-text-muted">Compte</h3>
+          <a href="login.html" class="shop-footer__link">Connexion</a>
+          <a href="register.html" class="shop-footer__link">Créer un compte</a>
+          <a href="account.html" class="shop-footer__link">Mon compte</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</main>
+
+<script src="js/ui.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catégories — Administration Épure</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Aller au contenu</a>
+
+  <div class="admin-layout" data-component="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" data-component="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar__logo">
+        <span class="admin-sidebar__logo-text">Épure</span>
+      </div>
+      <nav class="admin-sidebar__nav" aria-label="Navigation administration">
+        <div class="admin-sidebar__section-title">Principal</div>
+        <a href="index.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="7" height="7" rx="1"/><rect x="11" y="2" width="7" height="7" rx="1"/><rect x="2" y="11" width="7" height="7" rx="1"/><rect x="11" y="11" width="7" height="7" rx="1"/></svg>
+          <span class="admin-sidebar__link-label">Tableau de bord</span>
+        </a>
+        <a href="orders.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h16l-1.5 9H3.5L2 3z"/><circle cx="7" cy="17" r="1.5"/><circle cx="14" cy="17" r="1.5"/></svg>
+          <span class="admin-sidebar__link-label">Commandes</span>
+        </a>
+        <a href="products.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="16" height="16" rx="2"/><circle cx="7" cy="7" r="1.5"/><path d="M2 12l4-4 3 3 5-5"/></svg>
+          <span class="admin-sidebar__link-label">Produits</span>
+        </a>
+        <a href="customers.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="7" r="3"/><path d="M3 18c0-3.3 3.1-6 7-6s7 2.7 7 6"/></svg>
+          <span class="admin-sidebar__link-label">Clients</span>
+        </a>
+        <div class="admin-sidebar__section-title">Catalogue</div>
+        <a href="categories.html" class="admin-sidebar__link admin-sidebar__link--active" aria-current="page">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h6v6H3V3zM12 11h5v6h-5v-6z"/><path d="M3 14l4-5 3 4 5-6"/></svg>
+          <span class="admin-sidebar__link-label">Catégories</span>
+        </a>
+        <a href="discounts.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M10 6v8M7 10h6"/></svg>
+          <span class="admin-sidebar__link-label">Réductions</span>
+        </a>
+        <div class="admin-sidebar__section-title">Configuration</div>
+        <a href="settings.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="3"/><path d="M10 1v3M10 16v3M1 10h3M16 10h3M3.5 3.5l2.1 2.1M14.4 14.4l2.1 2.1M3.5 16.5l2.1-2.1M14.4 5.6l2.1-2.1"/></svg>
+          <span class="admin-sidebar__link-label">Paramètres</span>
+        </a>
+      </nav>
+      <button class="admin-sidebar__toggle" data-action="sidebar-toggle" aria-label="Réduire la barre latérale">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M6 4l4 4-4 4"/></svg>
+      </button>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="admin-main">
+      <header class="admin-topbar" data-component="admin-topbar">
+        <div class="admin-topbar__left">
+          <div class="admin-topbar__search" data-component="search-filter">
+            <svg class="admin-topbar__search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3 3"/></svg>
+            <input type="search" class="admin-topbar__search-input" placeholder="Rechercher une catégorie…" data-debounce="200" aria-label="Rechercher une catégorie">
+          </div>
+        </div>
+        <div class="admin-topbar__right">
+          <button class="admin-topbar__notification" aria-label="Notifications" data-component="notification-count" data-count="3" data-max="99">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2c-2.8 0-5 2.2-5 5v2l-2 3h14l-2-3V7c0-2.8-2.2-5-5-5z"/><path d="M7 17a3 3 0 006 0"/></svg>
+            <span class="admin-topbar__notif-badge" aria-label="3 notifications">3</span>
+          </button>
+          <div class="dropdown" data-component="dropdown">
+            <button class="admin-topbar__avatar" data-dropdown-trigger aria-label="Menu utilisateur">MD</button>
+            <div class="dropdown__menu" data-dropdown-menu>
+              <a href="#" class="dropdown__item">Mon profil</a>
+              <a href="settings.html" class="dropdown__item">Paramètres</a>
+              <div class="dropdown__divider"></div>
+              <a href="login.html" class="dropdown__item dropdown__item--danger">Déconnexion</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main" class="admin-content" data-component="admin-categories">
+
+        <div class="admin-content__header">
+          <h1 class="admin-content__title">Catégories</h1>
+          <div class="admin-content__actions">
+            <button class="btn btn--primary btn--sm" data-component="category-action" data-action="add">+ Ajouter une catégorie</button>
+          </div>
+        </div>
+
+        <!-- Categories Container -->
+        <div data-component="categories-tree-container" data-endpoint="/api/admin/categories" data-state="success">
+
+          <!-- Loading state -->
+          <div class="state-loading">
+            <div class="skeleton skeleton--text skeleton--title u-mb-4" ></div>
+            <div class="skeleton skeleton--text u-mb-3" ></div>
+            <div class="skeleton skeleton--text u-mb-3 u-w-80" ></div>
+            <div class="skeleton skeleton--text u-mb-3 u-w-60" ></div>
+            <div class="skeleton skeleton--text u-mb-3 u-w-70" ></div>
+          </div>
+
+          <!-- Empty state -->
+          <div class="state-empty">
+            <div class="empty-state">
+              <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="var(--color-ink-subtle)" stroke-width="1.5">
+                <path d="M8 8h20v20H8V8zM36 36h20v20H36V36z"/><path d="M14 28l8-12 6 8 10-14"/>
+              </svg>
+              <h4 class="empty-state__title">Aucune catégorie</h4>
+              <p class="empty-state__text">Créez des catégories pour organiser vos produits.</p>
+              <button class="btn btn--primary" data-component="category-action" data-action="add">Créer une catégorie</button>
+            </div>
+          </div>
+
+          <!-- Error state -->
+          <div class="state-error">
+            <div class="empty-state">
+              <h4 class="empty-state__title">Erreur de chargement</h4>
+              <p class="empty-state__text">Impossible de charger les catégories. Veuillez réessayer.</p>
+              <button class="btn btn--secondary">Réessayer</button>
+            </div>
+          </div>
+
+          <!-- Success state -->
+          <div class="state-content">
+            <div class="category-tree" data-component="category-tree">
+
+              <div class="category-tree__item" data-category-id="1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h8v8H4V6zM4 6V3a2 2 0 012-2h4a2 2 0 012 2v3"/></svg>
+                <span class="category-tree__name"><strong>Céramique</strong></span>
+                <span class="category-tree__count">12 produits</span>
+                <button class="btn btn--ghost btn--sm">Modifier</button>
+              </div>
+              <div class="category-tree__item category-tree__item--child" data-category-id="2" data-parent-id="1">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 14V1h12v13H1z"/></svg>
+                <span class="category-tree__name">Tasses</span>
+                <span class="category-tree__count">5 produits</span>
+                <button class="btn btn--ghost btn--sm">Modifier</button>
+              </div>
+              <div class="category-tree__item category-tree__item--child" data-category-id="3" data-parent-id="1">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 14V1h12v13H1z"/></svg>
+                <span class="category-tree__name">Vases</span>
+                <span class="category-tree__count">7 produits</span>
+                <button class="btn btn--ghost btn--sm">Modifier</button>
+              </div>
+
+              <div class="category-tree__item" data-category-id="4">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h8v8H4V6zM4 6V3a2 2 0 012-2h4a2 2 0 012 2v3"/></svg>
+                <span class="category-tree__name"><strong>Parfumerie</strong></span>
+                <span class="category-tree__count">8 produits</span>
+                <button class="btn btn--ghost btn--sm">Modifier</button>
+              </div>
+              <div class="category-tree__item category-tree__item--child" data-category-id="5" data-parent-id="4">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 14V1h12v13H1z"/></svg>
+                <span class="category-tree__name">Bougies</span>
+                <span class="category-tree__count">6 produits</span>
+                <button class="btn btn--ghost btn--sm">Modifier</button>
+              </div>
+
+              <div class="category-tree__item" data-category-id="6">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h8v8H4V6zM4 6V3a2 2 0 012-2h4a2 2 0 012 2v3"/></svg>
+                <span class="category-tree__name"><strong>Textile</strong></span>
+                <span class="category-tree__count">5 produits</span>
+                <button class="btn btn--ghost btn--sm">Modifier</button>
+              </div>
+
+              <div class="category-tree__item" data-category-id="7">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h8v8H4V6zM4 6V3a2 2 0 012-2h4a2 2 0 012 2v3"/></svg>
+                <span class="category-tree__name"><strong>Maison</strong></span>
+                <span class="category-tree__count">10 produits</span>
+                <button class="btn btn--ghost btn--sm">Modifier</button>
+              </div>
+
+              <div class="category-tree__item" data-category-id="8">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h8v8H4V6zM4 6V3a2 2 0 012-2h4a2 2 0 012 2v3"/></svg>
+                <span class="category-tree__name"><strong>Bijoux</strong></span>
+                <span class="category-tree__count">4 produits</span>
+                <button class="btn btn--ghost btn--sm">Modifier</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Add/Edit Category Form (hidden by default, shown via JS) -->
+        <div class="u-none u-mt-8" data-component="category-form" >
+          <div class="dashboard-card">
+            <div class="dashboard-card__header">
+              <h2 class="dashboard-card__title" data-slot="form-title">Ajouter une catégorie</h2>
+            </div>
+            <div class="dashboard-card__body">
+              <form action="/api/admin/categories" method="post" name="category-form" id="category-form" autocomplete="off">
+                <input type="hidden" name="id" value="">
+                <div class="form-group u-mb-4" >
+                  <label class="form-label" for="category-name">Nom de la catégorie</label>
+                  <input type="text" id="category-name" name="name" class="form-input" placeholder="Ex: Céramique" required>
+                </div>
+                <div class="form-group u-mb-4" >
+                  <label class="form-label" for="category-slug">Slug</label>
+                  <input type="text" id="category-slug" name="slug" class="form-input" placeholder="ceramique" required>
+                  <span class="form-hint">Généré automatiquement à partir du nom si laissé vide.</span>
+                </div>
+                <div class="form-group u-mb-6" >
+                  <label class="form-label" for="category-parent">Catégorie parente</label>
+                  <select id="category-parent" name="parent_id" class="form-select">
+                    <option value="">Aucune (catégorie racine)</option>
+                    <option value="1">Céramique</option>
+                    <option value="4">Parfumerie</option>
+                    <option value="6">Textile</option>
+                    <option value="7">Maison</option>
+                    <option value="8">Bijoux</option>
+                  </select>
+                </div>
+                <div class="u-flex u-justify-end u-gap-3" >
+                  <button type="button" class="btn btn--secondary" data-action="cancel-category-form">Annuler</button>
+                  <button type="submit" class="btn btn--primary">Enregistrer</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      
+  <template id="template-table-row">
+    <tr>
+      <td><input type="checkbox" class="checkbox__input" aria-label="Sélectionner"></td>
+      <td><strong data-slot="id"></strong></td>
+      <td data-slot="name"></td>
+      <td data-slot="date"></td>
+      <td data-slot="total"></td>
+      <td><span class="badge" data-slot="status"></span></td>
+      <td data-slot="actions"></td>
+    </tr>
+  </template>
+
+</main>
+    </div>
+  </div>
+
+  <script src="../js/ui.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

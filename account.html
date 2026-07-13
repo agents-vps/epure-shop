@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon compte — Épure</title>
+  <meta name="description" content="Gérez votre profil, vos commandes et vos adresses — Épure, boutique de céramique artisanale.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Aller au contenu</a>
+
+<!-- ═══ STANDARD HEADER ═══ -->
+<header class="shop-header" role="banner">
+  <div class="container">
+    <div class="shop-header__top">
+      <button class="mobile-menu-toggle" data-action="toggle-menu" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <a href="index.html" class="shop-header__logo">Épure</a>
+      <form class="shop-header__search" action="search-results.html" method="GET" role="search">
+        <svg class="shop-header__search-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="7"/><path d="M14.5 14.5L19 19"/></svg>
+        <input type="search" name="q" class="shop-header__search-input" placeholder="Rechercher..." aria-label="Rechercher un produit">
+      </form>
+      <div class="shop-header__actions">
+        <a href="account.html" class="shop-header__action" aria-label="Mon compte" data-tooltip="Mon compte">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="7" r="4"/><path d="M3 18c0-4.4 3.1-7 7-7s7 2.6 7 7"/></svg>
+        </a>
+        <a href="favorites.html" class="shop-header__action" aria-label="Favoris" data-tooltip="Favoris">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+        </a>
+        <a href="cart.html" class="shop-header__action" aria-label="Panier" data-tooltip="Panier" data-component="cart-badge">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h1.5l1.1 5.5m0 0L7 13h8l2-6H5.6z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="15.5" cy="17.5" r="1.5"/></svg>
+          <span class="shop-header__badge u-none" data-slot="cart-count" >2</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="shop-nav" aria-label="Navigation principale">
+    <div class="container">
+      <ul class="shop-nav__list">
+        <li><a href="category.html?cat=ceramique" class="shop-nav__link">Céramique</a></li>
+        <li><a href="category.html?cat=verre" class="shop-nav__link">Verre soufflé</a></li>
+        <li><a href="category.html?cat=textile" class="shop-nav__link">Textile</a></li>
+        <li><a href="category.html?cat=bois" class="shop-nav__link">Bois</a></li>
+        <li><a href="category.html?cat=decoration" class="shop-nav__link">Décoration</a></li>
+        <li><a href="category.html?cat=nouveautes" class="shop-nav__link">Nouveautés</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- ═══ MOBILE MENU ═══ -->
+<div class="mobile-menu" id="mobile-menu" data-component="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+  <div class="mobile-menu__header">
+    <a href="index.html" class="shop-header__logo">Épure</a>
+    <button class="btn btn--icon btn--ghost" data-action="close-menu" aria-label="Fermer le menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu__nav">
+    <a href="category.html?cat=ceramique" class="mobile-menu__link">Céramique</a>
+    <a href="category.html?cat=verre" class="mobile-menu__link">Verre soufflé</a>
+    <a href="category.html?cat=textile" class="mobile-menu__link">Textile</a>
+    <a href="category.html?cat=bois" class="mobile-menu__link">Bois</a>
+    <a href="category.html?cat=decoration" class="mobile-menu__link">Décoration</a>
+    <a href="category.html?cat=nouveautes" class="mobile-menu__link">Nouveautés</a>
+    <hr class="u-border-t u-p-4">
+    <a href="account.html" class="mobile-menu__link">Mon compte</a>
+    <a href="favorites.html" class="mobile-menu__link">Favoris</a>
+  </nav>
+</div>
+
+<main id="main">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html" class="breadcrumb__link">Accueil</a>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Mon compte</span>
+    </nav>
+
+    <h1>Mon compte</h1>
+
+    <div class="account-layout" data-component="account-page" data-state="success">
+
+      <!-- ═══ SIDEBAR NAV ═══ -->
+      <aside>
+        <nav class="account-nav" aria-label="Navigation du compte" data-component="account-tabs">
+          <a href="#profile" class="account-nav__link account-nav__link--active" data-tab="profile" data-action="switch-tab">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="7" r="4"/><path d="M3 18c0-4.4 3.1-7 7-7s7 2.6 7 7"/></svg>
+            Profil
+          </a>
+          <a href="#orders" class="account-nav__link" data-tab="orders" data-action="switch-tab">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M3 6h14M7 2v4M13 2v4"/></svg>
+            Commandes
+          </a>
+          <a href="#addresses" class="account-nav__link" data-tab="addresses" data-action="switch-tab">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C6.7 2 4 4.7 4 8c0 5 6 10 6 10s6-5 6-10c0-3.3-2.7-6-6-6z"/><circle cx="10" cy="8" r="1.5"/></svg>
+            Adresses
+          </a>
+          <a href="#favorites" class="account-nav__link" data-tab="favorites" data-action="switch-tab">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+            Favoris
+          </a>
+          <hr class="u-border-t u-p-4">
+          <a href="login.html" class="account-nav__link u-text-error" >
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 13l-4-4 4-4M3 9h12M16 3v2M16 17v-2"/></svg>
+            Déconnexion
+          </a>
+        </nav>
+      </aside>
+
+      <!-- ═══ CONTENT AREA ═══ -->
+      <div data-component="account-content" data-state="success">
+
+        <!-- Loading state -->
+        <div class="state-loading">
+          <div class="skeleton skeleton--title u-mb-6" ></div>
+          <div class="skeleton skeleton--text"></div>
+          <div class="skeleton skeleton--text"></div>
+          <div class="skeleton skeleton--text u-mb-6 u-w-60" ></div>
+          <div class="skeleton skeleton--text skeleton--title u-mb-4"></div>
+          <div class="skeleton skeleton--text"></div>
+          <div class="skeleton skeleton--text"></div>
+          <div class="skeleton skeleton--btn"></div>
+        </div>
+
+        <!-- Error state -->
+        <div class="state-error">
+          <div class="u-mb-6 u-bg-error-light u-radius-sm">
+            <p class="u-text-sm u-fw-medium u-text-error" >Impossible de charger vos informations.</p>
+            <button class="btn btn--secondary btn--sm u-mt-3" >Réessayer</button>
+          </div>
+        </div>
+
+        <!-- Content state -->
+        <div class="state-content">
+
+          <!-- ═══ TAB: Profile ═══ -->
+          <section class="tabs__panel" data-state="active" id="profile" data-slot="profile-tab">
+            <h2 class="u-mb-6 u-text-2xl" >Informations personnelles</h2>
+
+            <form class="u-max-w-520" action="/api/account/profile" method="POST" data-component="profile-form" data-endpoint="/api/account/profile"  novalidate>
+              <div class="u-grid u-gap-4 u-grid-cols-2 u-mb-4" >
+                <div class="form-group">
+                  <label class="form-label" for="account-firstname">Prénom</label>
+                  <input type="text" id="account-firstname" name="firstname" class="form-input" value="Marie" required autocomplete="given-name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="account-lastname">Nom</label>
+                  <input type="text" id="account-lastname" name="lastname" class="form-input" value="Dupont" required autocomplete="family-name">
+                </div>
+              </div>
+
+              <div class="form-group u-mb-4" >
+                <label class="form-label" for="account-email">Email</label>
+                <input type="email" id="account-email" name="email" class="form-input" value="marie@exemple.com" required autocomplete="email">
+              </div>
+
+              <div class="form-group u-mb-6" >
+                <label class="form-label" for="account-phone">Téléphone</label>
+                <input type="tel" id="account-phone" name="phone" class="form-input" value="06 12 34 56 78" autocomplete="tel">
+              </div>
+
+              <button type="submit" class="btn btn--primary" data-action="save-profile">Enregistrer les modifications</button>
+            </form>
+
+            <!-- Password change -->
+            <hr class="u-max-w-520 u-border-t">
+
+            <h3 class="u-mb-6 u-text-xl" >Changer le mot de passe</h3>
+
+            <form class="u-max-w-520" action="/api/account/password" method="POST" data-component="password-form" data-endpoint="/api/account/password"  novalidate>
+              <div class="form-group u-mb-4" >
+                <label class="form-label" for="account-current-password">Mot de passe actuel</label>
+                <input type="password" id="account-current-password" name="current_password" class="form-input" required autocomplete="current-password">
+              </div>
+
+              <div class="form-group u-mb-4" >
+                <label class="form-label" for="account-new-password">Nouveau mot de passe</label>
+                <input type="password" id="account-new-password" name="new_password" class="form-input" required autocomplete="new-password" minlength="8">
+                <span class="form-hint">8 caractères minimum, incluant une majuscule et un chiffre.</span>
+              </div>
+
+              <div class="form-group u-mb-6" >
+                <label class="form-label" for="account-confirm-password">Confirmer le mot de passe</label>
+                <input type="password" id="account-confirm-password" name="confirm_password" class="form-input" required autocomplete="new-password" minlength="8">
+              </div>
+
+              <button type="submit" class="btn btn--secondary" data-action="change-password">Mettre à jour le mot de passe</button>
+            </form>
+          </section>
+
+          <!-- ═══ TAB: Orders ═══ -->
+          <section class="tabs__panel" id="orders" data-slot="orders-tab" data-component="orders-list" data-endpoint="/api/account/orders">
+            <h2 class="u-mb-6 u-text-2xl" >Mes commandes</h2>
+
+            <!-- Empty state -->
+            <div class="state-empty">
+              <div class="empty-state">
+                <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="10" y="14" width="44" height="40" rx="3"/><path d="M22 30h20M22 38h14"/></svg>
+                <h4 class="empty-state__title">Aucune commande</h4>
+                <p class="empty-state__text">Vous n'avez pas encore passé de commande.</p>
+                <a href="index.html" class="btn btn--primary">Découvrir la boutique</a>
+              </div>
+            </div>
+
+            <!-- Content state (with sample order) -->
+            <div class="state-content">
+              <div class="table-wrapper">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>N° commande</th>
+                      <th>Date</th>
+                      <th>Articles</th>
+                      <th>Total</th>
+                      <th>Statut</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="u-fw-semibold"><a href="order-confirmation.html" >#2026-0713</a></td>
+                      <td>13/07/2026</td>
+                      <td>2</td>
+                      <td class="u-fw-medium" >96,90 €</td>
+                      <td><span class="badge badge--success">Confirmée</span></td>
+                    </tr>
+                    <tr>
+                      <td class="u-fw-semibold"><a href="#" >#2026-0618</a></td>
+                      <td>18/06/2026</td>
+                      <td>3</td>
+                      <td class="u-fw-medium" >142,50 €</td>
+                      <td><span class="badge badge--info">Livrée</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ TAB: Addresses ═══ -->
+          <section class="tabs__panel" id="addresses" data-slot="addresses-tab" data-component="addresses-list" data-endpoint="/api/account/addresses">
+            <div class="u-flex u-items-center u-justify-between u-mb-6" >
+              <h2 class="u-text-2xl" >Mes adresses</h2>
+              <button type="button" class="btn btn--secondary btn--sm" data-action="add-address">+ Ajouter</button>
+            </div>
+
+            <!-- Empty state -->
+            <div class="state-empty">
+              <div class="empty-state">
+                <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M32 6C22 6 14 14 14 24c0 15 18 30 18 30s18-15 18-30C50 14 42 6 32 6z"/><circle cx="32" cy="24" r="5"/></svg>
+                <h4 class="empty-state__title">Aucune adresse enregistrée</h4>
+                <p class="empty-state__text">Ajoutez une adresse pour vos livraisons.</p>
+                <button type="button" class="btn btn--primary" data-action="add-address">Ajouter une adresse</button>
+              </div>
+            </div>
+
+            <!-- Content state -->
+            <div class="state-content">
+              <div class="u-grid u-gap-4 u-grid-cols-auto" >
+                <div class="u-bg-card u-radius-md" style="border:1.5px solid var(--color-accent); padding:var(--space-4)">
+                  <span class="badge badge--accent u-mb-2" >Par défaut</span>
+                  <p class="u-text-sm u-fw-semibold" >Domicile</p>
+                  <p class="u-text-sm u-text-muted" >Marie Dupont</p>
+                  <p class="u-text-sm u-text-muted" >123 rue de la Céramique</p>
+                  <p class="u-text-sm u-text-muted" >75001 Paris, France</p>
+                  <div class="u-flex u-gap-2 u-mt-3" >
+                    <button type="button" class="btn btn--ghost btn--sm" data-action="edit-address">Modifier</button>
+                    <button type="button" class="btn btn--ghost btn--sm u-text-error"  data-action="delete-address">Supprimer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ TAB: Favorites ═══ -->
+          <section class="tabs__panel" id="favorites" data-slot="favorites-tab" data-component="favorites-list" data-endpoint="/api/account/favorites">
+            <h2 class="u-mb-6 u-text-2xl" >Mes favoris</h2>
+
+            <!-- Empty state -->
+            <div class="state-empty">
+              <div class="empty-state">
+                <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M32 52l-4.6-4.2C13 39.2 7 32.5 7 27.5 7 20.7 12.4 14 19 14c4.1 0 8 2.2 10.1 5.5L32 21.6l2.9-2.1C37 16.2 40.9 14 45 14c6.6 0 12 6.7 12 13.5 0 5-6 11.7-20.4 20.3L32 52z"/></svg>
+                <h4 class="empty-state__title">Aucun favori</h4>
+                <p class="empty-state__text">Ajoutez des articles à vos favoris pour les retrouver facilement.</p>
+                <a href="index.html" class="btn btn--primary">Découvrir la boutique</a>
+              </div>
+            </div>
+
+            <!-- Content state -->
+            <div class="state-content">
+              <div class="grid-3" data-slot="favorites-grid">
+                <article class="product-card" data-component="product-card">
+                  <div class="product-card__image-wrapper">
+                    <div class="product-card__image u-flex u-items-center u-justify-center u-bg-border-light" >Image</div>
+                    <div class="product-card__actions">
+                      <button class="product-card__action-btn u-text-error" aria-label="Retirer des favoris" data-action="remove-favorite" >
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" stroke="none"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="product-card__body">
+                    <span class="product-card__category">Céramique</span>
+                    <h3 class="product-card__title">Tasse artisanale — Bleu Azur</h3>
+                    <div class="product-card__price">34,00 €</div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="shop-footer" role="contentinfo">
+  <div class="container">
+    <div class="shop-footer__grid">
+      <div>
+        <h3 class="shop-footer__title">Épure</h3>
+        <a href="#" class="shop-footer__link">Notre histoire</a>
+        <a href="#" class="shop-footer__link">Artisans</a>
+        <a href="#" class="shop-footer__link">Blog</a>
+        <a href="#" class="shop-footer__link">Presse</a>
+      </div>
+      <div>
+        <h3 class="shop-footer__title">Service client</h3>
+        <a href="#" class="shop-footer__link">Contact</a>
+        <a href="#" class="shop-footer__link">Livraison & retours</a>
+        <a href="#" class="shop-footer__link">FAQ</a>
+        <a href="#" class="shop-footer__link">Guide des tailles</a>
+      </div>
+      <div>
+        <h3 class="shop-footer__title">Légal</h3>
+        <a href="#" class="shop-footer__link">CGV</a>
+        <a href="#" class="shop-footer__link">Mentions légales</a>
+        <a href="#" class="shop-footer__link">Politique de confidentialité</a>
+        <a href="#" class="shop-footer__link">Cookies</a>
+      </div>
+      <div>
+        <h3 class="shop-footer__title">Newsletter</h3>
+        <p class="u-mb-3 u-text-sm u-text-muted" >Recevez nos nouveautés et offres exclusives.</p>
+        <form class="shop-footer__newsletter-input" action="/api/newsletter" method="POST">
+          <input type="email" name="email" placeholder="votre@email.com" aria-label="Email pour la newsletter" autocomplete="email" required>
+          <button type="submit" class="btn btn--primary btn--sm">S'inscrire</button>
+        </form>
+      </div>
+    </div>
+    <div class="shop-footer__bottom">
+      <span>&copy; 2026 Épure — Tous droits réservés</span>
+      <span>Fait avec ❤️ en France</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ TEMPLATES ═══ -->
+<template id="template-account-order-row">
+  <tr>
+    <td class="u-fw-semibold"><a href="#"  data-slot="order-id"></a></td>
+    <td data-slot="order-date"></td>
+    <td data-slot="order-items-count"></td>
+    <td class="u-fw-medium"  data-slot="order-total"></td>
+    <td><span class="badge" data-slot="order-status"></span></td>
+  </tr>
+</template>
+
+<template id="template-account-address-card">
+  <div class="u-bg-card u-border u-radius-md">
+    <span class="badge badge--neutral u-mb-2" data-slot="address-label" ></span>
+    <p class="u-text-sm u-fw-semibold"  data-slot="address-name"></p>
+    <p class="u-text-sm u-text-muted"  data-slot="address-line1"></p>
+    <p class="u-text-sm u-text-muted"  data-slot="address-line2"></p>
+    <div class="u-flex u-gap-2 u-mt-3" >
+      <button type="button" class="btn btn--ghost btn--sm" data-action="edit-address">Modifier</button>
+      <button type="button" class="btn btn--ghost btn--sm u-text-error"  data-action="delete-address">Supprimer</button>
+    </div>
+  </div>
+</template>
+
+<script src="js/ui.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>

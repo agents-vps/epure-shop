@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commandes — Administration Épure</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Aller au contenu</a>
+
+  <div class="admin-layout" data-component="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" data-component="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar__logo">
+        <span class="admin-sidebar__logo-text">Épure</span>
+      </div>
+      <nav class="admin-sidebar__nav" aria-label="Navigation administration">
+        <div class="admin-sidebar__section-title">Principal</div>
+        <a href="index.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="7" height="7" rx="1"/><rect x="11" y="2" width="7" height="7" rx="1"/><rect x="2" y="11" width="7" height="7" rx="1"/><rect x="11" y="11" width="7" height="7" rx="1"/></svg>
+          <span class="admin-sidebar__link-label">Tableau de bord</span>
+        </a>
+        <a href="orders.html" class="admin-sidebar__link admin-sidebar__link--active" aria-current="page">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h16l-1.5 9H3.5L2 3z"/><circle cx="7" cy="17" r="1.5"/><circle cx="14" cy="17" r="1.5"/></svg>
+          <span class="admin-sidebar__link-label">Commandes</span>
+        </a>
+        <a href="products.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="16" height="16" rx="2"/><circle cx="7" cy="7" r="1.5"/><path d="M2 12l4-4 3 3 5-5"/></svg>
+          <span class="admin-sidebar__link-label">Produits</span>
+        </a>
+        <a href="customers.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="7" r="3"/><path d="M3 18c0-3.3 3.1-6 7-6s7 2.7 7 6"/></svg>
+          <span class="admin-sidebar__link-label">Clients</span>
+        </a>
+        <div class="admin-sidebar__section-title">Catalogue</div>
+        <a href="categories.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h6v6H3V3zM12 11h5v6h-5v-6z"/><path d="M3 14l4-5 3 4 5-6"/></svg>
+          <span class="admin-sidebar__link-label">Catégories</span>
+        </a>
+        <a href="discounts.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M10 6v8M7 10h6"/></svg>
+          <span class="admin-sidebar__link-label">Réductions</span>
+        </a>
+        <div class="admin-sidebar__section-title">Configuration</div>
+        <a href="settings.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="3"/><path d="M10 1v3M10 16v3M1 10h3M16 10h3M3.5 3.5l2.1 2.1M14.4 14.4l2.1 2.1M3.5 16.5l2.1-2.1M14.4 5.6l2.1-2.1"/></svg>
+          <span class="admin-sidebar__link-label">Paramètres</span>
+        </a>
+      </nav>
+      <button class="admin-sidebar__toggle" data-action="sidebar-toggle" aria-label="Réduire la barre latérale">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M6 4l4 4-4 4"/></svg>
+      </button>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="admin-main">
+      <header class="admin-topbar" data-component="admin-topbar">
+        <div class="admin-topbar__left">
+          <div class="admin-topbar__search" data-component="search-filter">
+            <svg class="admin-topbar__search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3 3"/></svg>
+            <input type="search" class="admin-topbar__search-input" placeholder="Rechercher une commande…" data-search-target="orders-table" data-debounce="200" aria-label="Rechercher une commande">
+          </div>
+        </div>
+        <div class="admin-topbar__right">
+          <button class="admin-topbar__notification" aria-label="Notifications" data-component="notification-count" data-count="3" data-max="99">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2c-2.8 0-5 2.2-5 5v2l-2 3h14l-2-3V7c0-2.8-2.2-5-5-5z"/><path d="M7 17a3 3 0 006 0"/></svg>
+            <span class="admin-topbar__notif-badge" aria-label="3 notifications">3</span>
+          </button>
+          <div class="dropdown" data-component="dropdown">
+            <button class="admin-topbar__avatar" data-dropdown-trigger aria-label="Menu utilisateur">MD</button>
+            <div class="dropdown__menu" data-dropdown-menu>
+              <a href="#" class="dropdown__item">Mon profil</a>
+              <a href="settings.html" class="dropdown__item">Paramètres</a>
+              <div class="dropdown__divider"></div>
+              <a href="login.html" class="dropdown__item dropdown__item--danger">Déconnexion</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main" class="admin-content" data-component="admin-orders">
+
+        <div class="admin-content__header">
+          <h1 class="admin-content__title">Commandes</h1>
+          <div class="admin-content__actions">
+            <button class="btn btn--secondary btn--sm">Export CSV</button>
+            <button class="btn btn--primary btn--sm">+ Nouvelle commande</button>
+          </div>
+        </div>
+
+        <!-- Status Tabs -->
+        <div class="status-tabs" data-component="status-tabs" role="tablist" aria-label="Filtrer par statut">
+          <button class="status-tabs__tab status-tabs__tab--active" role="tab" aria-selected="true" data-status="all">
+            Toutes <span class="status-tabs__count">142</span>
+          </button>
+          <button class="status-tabs__tab" role="tab" aria-selected="false" data-status="pending">
+            En attente <span class="status-tabs__count">8</span>
+          </button>
+          <button class="status-tabs__tab" role="tab" aria-selected="false" data-status="shipped">
+            Expédiées <span class="status-tabs__count">34</span>
+          </button>
+          <button class="status-tabs__tab" role="tab" aria-selected="false" data-status="delivered">
+            Livrées <span class="status-tabs__count">95</span>
+          </button>
+          <button class="status-tabs__tab" role="tab" aria-selected="false" data-status="cancelled">
+            Annulées <span class="status-tabs__count">5</span>
+          </button>
+        </div>
+
+        <!-- Date Range Filter -->
+        <div class="u-flex u-flex-wrap u-items-center u-gap-4 u-mb-4" >
+          <div class="form-group">
+            <label class="form-label" for="filter-date-from">Du</label>
+            <input type="date" id="filter-date-from" name="date_from" class="form-input u-w-160" >
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="filter-date-to">Au</label>
+            <input type="date" id="filter-date-to" name="date_to" class="form-input u-w-160" >
+          </div>
+          <button class="btn btn--secondary btn--sm u-self-end" >Appliquer</button>
+        </div>
+
+        <!-- Bulk Actions Bar -->
+        <div class="bulk-actions" data-component="bulk-actions" id="orders-bulk-actions">
+          <span data-slot="selected-count">0 sélectionnée(s)</span>
+          <button class="btn btn--secondary btn--sm" data-component="bulk-action" data-action="bulk-status" data-table="orders-table" data-confirm="Changer le statut des commandes sélectionnées ?">Changer statut</button>
+          <button class="btn btn--secondary btn--sm" data-component="bulk-action" data-action="bulk-export" data-table="orders-table">Exporter</button>
+          <button class="btn btn--danger btn--sm" data-component="bulk-action" data-action="bulk-delete" data-table="orders-table" data-confirm="Supprimer les commandes sélectionnées ? Cette action est irréversible.">Supprimer</button>
+        </div>
+
+        <!-- Orders Table Container -->
+        <div data-component="orders-table-container" data-endpoint="/api/admin/orders" data-state="success">
+
+          <!-- Loading state -->
+          <div class="state-loading">
+            <div class="table-wrapper">
+              <table class="table" data-component="skeleton" data-rows="5" data-columns="6">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" class="checkbox__input" disabled></th>
+                    <th>Commande</th>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Statut</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Empty state -->
+          <div class="state-empty">
+            <div class="empty-state">
+              <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="var(--color-ink-subtle)" stroke-width="1.5">
+                <path d="M8 12h48l-6 28H14L8 12z"/><circle cx="22" cy="52" r="3"/><circle cx="42" cy="52" r="3"/>
+              </svg>
+              <h4 class="empty-state__title">Aucune commande</h4>
+              <p class="empty-state__text">Les commandes apparaîtront ici dès que vos clients passeront leur première commande.</p>
+              <a href="#" class="btn btn--primary">Créer une commande</a>
+            </div>
+          </div>
+
+          <!-- Error state -->
+          <div class="state-error">
+            <div class="empty-state">
+              <h4 class="empty-state__title">Erreur de chargement</h4>
+              <p class="empty-state__text">Impossible de charger les commandes. Veuillez réessayer.</p>
+              <button class="btn btn--secondary">Réessayer</button>
+            </div>
+          </div>
+
+          <!-- Success state: filled table -->
+          <div class="state-content">
+            <div class="table-wrapper">
+              <table class="table" id="orders-table" data-component="table-select">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" class="checkbox__input" data-select-all aria-label="Tout sélectionner"></th>
+                    <th>Commande</th>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Statut</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox" class="checkbox__input" data-row-checkbox data-id="1034" aria-label="Sélectionner la commande 1034"></td>
+                    <td class="u-fw-semibold"><a href="order-detail.html" >#1034</a></td>
+                    <td>Marie Dupont</td>
+                    <td>13/07/2026</td>
+                    <td>145,00 €</td>
+                    <td><span class="badge badge--success">Payé</span></td>
+                    <td><a href="order-detail.html" class="btn btn--ghost btn--sm">Détail</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="checkbox__input" data-row-checkbox data-id="1035" aria-label="Sélectionner la commande 1035"></td>
+                    <td class="u-fw-semibold"><a href="order-detail.html" >#1035</a></td>
+                    <td>Jean Martin</td>
+                    <td>13/07/2026</td>
+                    <td>78,50 €</td>
+                    <td><span class="badge badge--warning">En attente</span></td>
+                    <td><a href="order-detail.html" class="btn btn--ghost btn--sm">Détail</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="checkbox__input" data-row-checkbox data-id="1036" aria-label="Sélectionner la commande 1036"></td>
+                    <td class="u-fw-semibold"><a href="order-detail.html" >#1036</a></td>
+                    <td>Sophie Petit</td>
+                    <td>12/07/2026</td>
+                    <td>210,00 €</td>
+                    <td><span class="badge badge--success">Payé</span></td>
+                    <td><a href="order-detail.html" class="btn btn--ghost btn--sm">Détail</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="checkbox__input" data-row-checkbox data-id="1037" aria-label="Sélectionner la commande 1037"></td>
+                    <td class="u-fw-semibold"><a href="order-detail.html" >#1037</a></td>
+                    <td>Luc Bernard</td>
+                    <td>12/07/2026</td>
+                    <td>92,00 €</td>
+                    <td><span class="badge badge--info">Expédiée</span></td>
+                    <td><a href="order-detail.html" class="btn btn--ghost btn--sm">Détail</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="checkbox__input" data-row-checkbox data-id="1038" aria-label="Sélectionner la commande 1038"></td>
+                    <td class="u-fw-semibold"><a href="order-detail.html" >#1038</a></td>
+                    <td>Emma Roux</td>
+                    <td>11/07/2026</td>
+                    <td>330,00 €</td>
+                    <td><span class="badge badge--error">Annulé</span></td>
+                    <td><a href="order-detail.html" class="btn btn--ghost btn--sm">Détail</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination -->
+            <nav class="pagination u-mt-6" aria-label="Pagination" >
+              <button class="pagination__btn" disabled aria-label="Page précédente">&larr;</button>
+              <button class="pagination__btn pagination__btn--active">1</button>
+              <button class="pagination__btn">2</button>
+              <button class="pagination__btn">3</button>
+              <button class="pagination__btn">…</button>
+              <button class="pagination__btn">12</button>
+              <button class="pagination__btn" aria-label="Page suivante">&rarr;</button>
+            </nav>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- TEMPLATES -->
+  <template id="template-order-row">
+    <tr>
+      <td><input type="checkbox" class="checkbox__input" data-row-checkbox aria-label="Sélectionner"></td>
+      <td class="u-fw-semibold"><a href="order-detail.html"  data-slot="order-id"></a></td>
+      <td data-slot="customer-name"></td>
+      <td data-slot="order-date"></td>
+      <td data-slot="order-total"></td>
+      <td data-slot="order-status"></td>
+      <td><a href="order-detail.html" class="btn btn--ghost btn--sm">Détail</a></td>
+    </tr>
+  </template>
+
+  <script src="../js/ui.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

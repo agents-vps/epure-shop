@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion — Épure</title>
+  <meta name="description" content="Connectez-vous à votre compte Épure pour suivre vos commandes et gérer vos informations.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/shop.css">
+</head>
+<body class="auth-page" data-component="login-page">
+
+<a href="#main" class="skip-link">Aller au contenu</a>
+
+<main id="main">
+  <div class="auth-card" data-component="login-form" data-endpoint="/api/auth/login" data-state="success">
+    <!-- Logo -->
+    <div class="auth-card__logo">
+      <a href="index.html">Épure</a>
+    </div>
+
+    <h1 class="auth-card__title">Connexion</h1>
+    <p class="auth-card__subtitle">Content de vous revoir.</p>
+
+    <!-- Loading state -->
+    <div class="state-loading" data-slot="loading">
+      <div class="skeleton skeleton--text skeleton--title u-mb-4" ></div>
+      <div class="skeleton skeleton--text u-mb-4" ></div>
+      <div class="skeleton skeleton--btn u-mt-6" ></div>
+    </div>
+
+    <!-- Error state -->
+    <div class="state-error" data-slot="error">
+      <div class="u-flex u-items-center u-gap-2 u-mb-6 u-bg-error-light u-radius-sm">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="var(--color-error)" stroke-width="1.5"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg>
+        <p class="u-text-sm u-fw-medium u-text-error"  data-slot="error-message">Email ou mot de passe incorrect. Veuillez réessayer.</p>
+      </div>
+    </div>
+
+    <!-- Content state (form) -->
+    <div class="state-content">
+      <form action="/api/auth/login" method="POST" novalidate>
+        <div class="form-group u-mb-4" >
+          <label class="form-label" for="login-email">Email</label>
+          <input type="email" id="login-email" name="email" class="form-input" required autocomplete="email" placeholder="vous@exemple.com">
+        </div>
+
+        <div class="form-group u-mb-2" >
+          <label class="form-label" for="login-password">Mot de passe</label>
+          <div class="u-relative" >
+            <input type="password" id="login-password" name="password" class="form-input" required autocomplete="current-password" placeholder="••••••••" minlength="8">
+            <button type="button" class="password-toggle u-text-muted" data-action="toggle-password" data-target="login-password" aria-label="Afficher le mot de passe">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4C4 4 1 10 1 10s3 6 9 6 9-6 9-6-3-6-9-6z"/><circle cx="10" cy="10" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="u-mb-6 u-text-right" >
+          <a class="u-text-xs u-text-muted" href="#">Mot de passe oublié&nbsp;?</a>
+        </div>
+
+        <button type="submit" class="btn btn--primary u-w-full"  data-action="login-submit">
+          Se connecter
+        </button>
+      </form>
+    </div>
+
+    <div class="auth-card__footer">
+      <p>Pas encore de compte&nbsp;? <a href="register.html">Créer un compte</a></p>
+    </div>
+  </div>
+</main>
+
+<!-- ═══ TEMPLATES ═══ -->
+<template id="template-login-loading">
+  <div class="u-text-center">
+    <div class="skeleton skeleton--text skeleton--title u-mb-4" ></div>
+    <div class="skeleton skeleton--text u-mb-4" ></div>
+    <div class="skeleton skeleton--btn u-mx-auto" ></div>
+  </div>
+</template>
+
+<script src="js/ui.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>

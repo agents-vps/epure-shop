@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modifier le produit — Administration Épure</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Aller au contenu</a>
+
+  <div class="admin-layout" data-component="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" data-component="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar__logo">
+        <span class="admin-sidebar__logo-text">Épure</span>
+      </div>
+      <nav class="admin-sidebar__nav" aria-label="Navigation administration">
+        <div class="admin-sidebar__section-title">Principal</div>
+        <a href="index.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="7" height="7" rx="1"/><rect x="11" y="2" width="7" height="7" rx="1"/><rect x="2" y="11" width="7" height="7" rx="1"/><rect x="11" y="11" width="7" height="7" rx="1"/></svg>
+          <span class="admin-sidebar__link-label">Tableau de bord</span>
+        </a>
+        <a href="orders.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h16l-1.5 9H3.5L2 3z"/><circle cx="7" cy="17" r="1.5"/><circle cx="14" cy="17" r="1.5"/></svg>
+          <span class="admin-sidebar__link-label">Commandes</span>
+        </a>
+        <a href="products.html" class="admin-sidebar__link admin-sidebar__link--active" aria-current="page">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="16" height="16" rx="2"/><circle cx="7" cy="7" r="1.5"/><path d="M2 12l4-4 3 3 5-5"/></svg>
+          <span class="admin-sidebar__link-label">Produits</span>
+        </a>
+        <a href="customers.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="7" r="3"/><path d="M3 18c0-3.3 3.1-6 7-6s7 2.7 7 6"/></svg>
+          <span class="admin-sidebar__link-label">Clients</span>
+        </a>
+        <div class="admin-sidebar__section-title">Catalogue</div>
+        <a href="categories.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h6v6H3V3zM12 11h5v6h-5v-6z"/><path d="M3 14l4-5 3 4 5-6"/></svg>
+          <span class="admin-sidebar__link-label">Catégories</span>
+        </a>
+        <a href="discounts.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M10 6v8M7 10h6"/></svg>
+          <span class="admin-sidebar__link-label">Réductions</span>
+        </a>
+        <div class="admin-sidebar__section-title">Configuration</div>
+        <a href="settings.html" class="admin-sidebar__link">
+          <svg class="admin-sidebar__link-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="3"/><path d="M10 1v3M10 16v3M1 10h3M16 10h3M3.5 3.5l2.1 2.1M14.4 14.4l2.1 2.1M3.5 16.5l2.1-2.1M14.4 5.6l2.1-2.1"/></svg>
+          <span class="admin-sidebar__link-label">Paramètres</span>
+        </a>
+      </nav>
+      <button class="admin-sidebar__toggle" data-action="sidebar-toggle" aria-label="Réduire la barre latérale">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M6 4l4 4-4 4"/></svg>
+      </button>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="admin-main">
+      <header class="admin-topbar" data-component="admin-topbar">
+        <div class="admin-topbar__left">
+          <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <a href="products.html" class="breadcrumb__link">Produits</a>
+            <span class="breadcrumb__sep">/</span>
+            <span class="breadcrumb__current">Tasse artisanale — Bleu Azur</span>
+          </nav>
+        </div>
+        <div class="admin-topbar__right">
+          <button class="admin-topbar__notification" aria-label="Notifications" data-component="notification-count" data-count="3" data-max="99">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2c-2.8 0-5 2.2-5 5v2l-2 3h14l-2-3V7c0-2.8-2.2-5-5-5z"/><path d="M7 17a3 3 0 006 0"/></svg>
+            <span class="admin-topbar__notif-badge" aria-label="3 notifications">3</span>
+          </button>
+          <div class="dropdown" data-component="dropdown">
+            <button class="admin-topbar__avatar" data-dropdown-trigger aria-label="Menu utilisateur">MD</button>
+            <div class="dropdown__menu" data-dropdown-menu>
+              <a href="#" class="dropdown__item">Mon profil</a>
+              <a href="settings.html" class="dropdown__item">Paramètres</a>
+              <div class="dropdown__divider"></div>
+              <a href="login.html" class="dropdown__item dropdown__item--danger">Déconnexion</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main" class="admin-content" data-component="admin-product-edit">
+
+        <div class="admin-content__header">
+          <h1 class="admin-content__title">Modifier le produit</h1>
+          <div class="admin-content__actions">
+            <a href="products.html" class="btn btn--ghost btn--sm">Annuler</a>
+          </div>
+        </div>
+
+        <form action="/api/admin/products/1" method="post" name="product-edit-form" id="product-edit-form" autocomplete="off" data-component="product-edit-form">
+          <input type="hidden" name="_method" value="put">
+
+          <div class="product-edit-layout">
+
+            <!-- LEFT: General info, description, media -->
+            <div>
+              <!-- General Info -->
+              <section class="product-edit-section" aria-labelledby="sec-general">
+                <h2 class="product-edit-section__title" id="sec-general">Informations générales</h2>
+
+                <div class="form-group u-mb-5" >
+                  <label class="form-label" for="product-name">Nom du produit</label>
+                  <input type="text" id="product-name" name="name" class="form-input" value="Tasse artisanale — Bleu Azur" required>
+                </div>
+
+                <div class="form-group u-mb-5" >
+                  <label class="form-label" for="product-sku">SKU</label>
+                  <input type="text" id="product-sku" name="sku" class="form-input" value="TS-001-BA" required>
+                  <span class="form-hint">Identifiant unique du produit. Généré automatiquement si vide.</span>
+                </div>
+
+                <div class="form-group u-mb-5" >
+                  <label class="form-label" for="product-description">Description</label>
+                  <textarea id="product-description" name="description" class="form-textarea" rows="6">Tasse artisanale en céramique émaillée, tournée à la main dans notre atelier. Teinte bleu azur inspirée des eaux méditerranéennes. Chaque pièce est unique.</textarea>
+                  <span class="form-hint">Description complète du produit affichée sur la page produit.</span>
+                </div>
+              </section>
+
+              <!-- Media Upload Zone -->
+              <section class="product-edit-section" aria-labelledby="sec-media">
+                <h2 class="product-edit-section__title" id="sec-media">Médias</h2>
+
+                <div class="media-zone" data-component="media-upload" data-accept="image/*" data-multiple="true">
+                  <svg class="media-zone__icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="4" y="8" width="32" height="28" rx="3"/><circle cx="13" cy="17" r="2"/><path d="M4 28l8-8 6 6 8-10 10 8"/>
+                  </svg>
+                  <p class="media-zone__text u-text-accent">Glissez-déposez vos images ici, ou <span >parcourez</span></p>
+                  <p class="u-mt-2 u-text-xs u-text-subtle" >PNG, JPG, WebP — 5 Mo max par image</p>
+                  <input type="file" name="images" accept="image/*" multiple hidden>
+                </div>
+
+                <div class="media-grid">
+                  <div class="media-thumb">
+                    <div class="u-flex u-items-center u-justify-center u-w-full u-text-subtle u-h-full u-text-xs" style="background:oklch(85% 0.04 245)">IMG 1</div>
+                    <button type="button" class="media-thumb__remove" aria-label="Supprimer l'image">×</button>
+                  </div>
+                  <div class="media-thumb">
+                    <div class="u-flex u-items-center u-justify-center u-w-full u-text-subtle u-h-full u-text-xs" style="background:oklch(85% 0.03 245)">IMG 2</div>
+                    <button type="button" class="media-thumb__remove" aria-label="Supprimer l'image">×</button>
+                  </div>
+                  <div class="media-thumb">
+                    <div class="u-flex u-items-center u-justify-center u-w-full u-text-subtle u-h-full u-text-xs" style="background:oklch(85% 0.02 245)">IMG 3</div>
+                    <button type="button" class="media-thumb__remove" aria-label="Supprimer l'image">×</button>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <!-- RIGHT: Price, Inventory, Status, Category (sticky) -->
+            <div class="product-edit-sticky">
+              <!-- Price & Inventory -->
+              <section class="product-edit-section" aria-labelledby="sec-inventory">
+                <h2 class="product-edit-section__title" id="sec-inventory">Prix et inventaire</h2>
+
+                <div class="form-group u-mb-4" >
+                  <label class="form-label" for="product-price">Prix (€)</label>
+                  <input type="number" id="product-price" name="price" class="form-input" value="34.00" min="0" step="0.01" required>
+                </div>
+
+                <div class="form-group u-mb-4" >
+                  <label class="form-label" for="product-compare-price">Prix barré (€)</label>
+                  <input type="number" id="product-compare-price" name="compare_price" class="form-input" value="42.00" min="0" step="0.01" placeholder="Optionnel">
+                </div>
+
+                <div class="form-group u-mb-4" >
+                  <label class="form-label" for="product-stock-qty">Stock</label>
+                  <input type="number" id="product-stock-qty" name="stock" class="form-input" value="2" min="0" step="1" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="product-sku-edit">SKU</label>
+                  <input type="text" id="product-sku-edit" name="sku_right" class="form-input" value="TS-001-BA" readonly tabindex="-1">
+                </div>
+              </section>
+
+              <!-- Status -->
+              <section class="product-edit-section" aria-labelledby="sec-status">
+                <h2 class="product-edit-section__title" id="sec-status">Statut</h2>
+                <div class="form-group">
+                  <select id="product-status" name="status" class="form-select">
+                    <option value="published" selected>Publié</option>
+                    <option value="draft">Brouillon</option>
+                    <option value="archived">Archivé</option>
+                  </select>
+                </div>
+              </section>
+
+              <!-- Category -->
+              <section class="product-edit-section" aria-labelledby="sec-category">
+                <h2 class="product-edit-section__title" id="sec-category">Catégorie</h2>
+                <div class="form-group">
+                  <select id="product-category" name="category_id" class="form-select">
+                    <option value="1" selected>Céramique</option>
+                    <option value="2">Parfumerie</option>
+                    <option value="3">Textile</option>
+                    <option value="4">Maison</option>
+                    <option value="5">Bijoux</option>
+                  </select>
+                </div>
+              </section>
+            </div>
+
+          </div><!-- /product-edit-layout -->
+
+          <!-- Sticky Action Bar -->
+          <div class="action-bar" data-component="action-bar">
+            <a href="products.html" class="btn btn--secondary">Annuler</a>
+            <button type="submit" name="action" value="draft" class="btn btn--secondary">Enregistrer brouillon</button>
+            <button type="submit" name="action" value="publish" class="btn btn--primary">Publier</button>
+          </div>
+
+        </form>
+
+      
+  <template id="template-table-row">
+    <tr>
+      <td><input type="checkbox" class="checkbox__input" aria-label="Sélectionner"></td>
+      <td><strong data-slot="id"></strong></td>
+      <td data-slot="name"></td>
+      <td data-slot="date"></td>
+      <td data-slot="total"></td>
+      <td><span class="badge" data-slot="status"></span></td>
+      <td data-slot="actions"></td>
+    </tr>
+  </template>
+
+</main>
+    </div>
+  </div>
+
+  <script src="../js/ui.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Céramique — Épure</title>
+<meta name="description" content="Découvrez notre collection de céramique artisanale : tasses, vases, bols et objets décoratifs faits main.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/utilities.css">
+<link rel="stylesheet" href="css/shop.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+<!-- ═══ SKIP LINK ═══ -->
+<a href="#main" class="skip-link">Aller au contenu principal</a>
+
+<!-- ═══ HEADER ═══ -->
+<header class="shop-header">
+  <div class="container">
+    <div class="shop-header__top">
+      <button class="mobile-menu-toggle" data-action="open-mobile-menu" aria-label="Menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 6h16M3 11h16M3 16h16"/>
+        </svg>
+      </button>
+
+      <a href="index.html" class="shop-header__logo" aria-label="Épure — Accueil">Épure</a>
+
+      <div class="shop-header__search" role="search">
+        <svg class="shop-header__search-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/>
+        </svg>
+        <input type="search" class="shop-header__search-input" placeholder="Rechercher un produit..." aria-label="Rechercher un produit" name="q" autocomplete="off">
+      </div>
+
+      <nav class="shop-header__actions" aria-label="Actions">
+        <a href="#" class="shop-header__action" aria-label="Favoris" data-component="favorite-toggle" data-tooltip="Favoris">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+        </a>
+        <a href="#" class="shop-header__action" aria-label="Compte" data-tooltip="Mon compte">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="7" r="4"/><path d="M3 18c0-3.5 3.1-6.5 7-6.5s7 3 7 6.5"/></svg>
+        </a>
+        <button class="shop-header__action" aria-label="Panier" data-action="open-cart" data-tooltip="Panier">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h2l.5 2m0 0L7 14h8l2-9H5.5z"/><circle cx="8.5" cy="17.5" r="1.5"/><circle cx="15.5" cy="17.5" r="1.5"/></svg>
+          <span class="shop-header__badge" data-component="cart-count" aria-label="0 article">0</span>
+        </button>
+      </nav>
+    </div>
+
+    <nav class="shop-nav" aria-label="Navigation principale">
+      <ul class="shop-nav__list">
+        <li><a href="category.html" class="shop-nav__link">Nouveautés</a></li>
+        <li><a href="category.html" class="shop-nav__link shop-nav__link--active" aria-current="page">Céramique</a></li>
+        <li><a href="category.html" class="shop-nav__link">Textile</a></li>
+        <li><a href="category.html" class="shop-nav__link">Décoration</a></li>
+        <li><a href="category.html" class="shop-nav__link">Art de la table</a></li>
+        <li><a href="category.html" class="shop-nav__link">Luminaires</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ MOBILE MENU ═══ -->
+<div class="mobile-menu" data-component="mobile-menu" data-state="closed" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+  <div class="mobile-menu__header">
+    <a href="index.html" class="shop-header__logo">Épure</a>
+    <button class="btn btn--icon btn--ghost" data-action="close-mobile-menu" aria-label="Fermer le menu">
+      <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu__nav" aria-label="Menu mobile">
+    <a href="category.html" class="mobile-menu__link">Nouveautés</a>
+    <a href="category.html" class="mobile-menu__link">Céramique</a>
+    <a href="category.html" class="mobile-menu__link">Textile</a>
+    <a href="category.html" class="mobile-menu__link">Décoration</a>
+    <a href="category.html" class="mobile-menu__link">Art de la table</a>
+    <a href="category.html" class="mobile-menu__link">Luminaires</a>
+  </nav>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<main id="main">
+  <div class="container">
+
+    <!-- ===== BREADCRUMB ===== -->
+    <nav class="breadcrumb page-header-spacing" aria-label="Fil d'Ariane" >
+      <a href="index.html" class="breadcrumb__link">Accueil</a>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current" aria-current="page">Céramique</span>
+    </nav>
+
+    <!-- ===== CATEGORY HEADER ===== -->
+    <header class="u-pb-6" >
+      <h1>Céramique</h1>
+      <p class="u-mt-2 u-max-w-600 u-text-muted" >
+        Pièces uniques façonnées à la main par des artisans français. Chaque objet porte la trace du geste et du feu.
+      </p>
+    </header>
+
+    <!-- ===== MOBILE FILTER TOGGLE ===== -->
+    <div class="u-pb-4" >
+      <button class="filter-toggle" data-action="open-mobile-filters" data-target="filter-sidebar" aria-expanded="false">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M3 5h14M3 10h14M3 15h10"/>
+        </svg>
+        Filtres
+      </button>
+    </div>
+
+    <!-- ===== CATEGORY LAYOUT ===== -->
+    <div class="category-layout" data-component="category-listing" data-state="success" data-endpoint="/api/products?category=ceramique">
+
+      <!-- SIDEBAR: Filters -->
+      <aside class="filter-sidebar" id="filter-sidebar" data-component="filters" role="search" aria-label="Filtres">
+        <!-- Mobile close -->
+        <div  class="filter-sidebar__mobile-header u-none u-items-center u-justify-between u-pb-4">
+          <span class="u-fw-semibold" >Filtres</span>
+          <button class="btn btn--icon btn--ghost" data-action="close-mobile-filters" data-target="filter-sidebar" aria-label="Fermer les filtres">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+          </button>
+        </div>
+
+        <!-- Price range -->
+        <div class="accordion" data-component="accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger filter-group__title" aria-expanded="true" data-action="toggle-accordion" data-target="#filter-price">
+              <span>Prix</span>
+              <svg class="accordion__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+            <div class="accordion__panel" id="filter-price" data-state="open">
+              <div class="accordion__panel-inner">
+                <div class="range-slider u-mb-3" >
+                  <label for="filter-price-min" class="sr-only">Prix minimum</label>
+                  <input type="range" id="filter-price-min" name="price_min" min="0" max="500" value="0" data-filter-price-min aria-label="Prix minimum">
+                  <label for="filter-price-max" class="sr-only">Prix maximum</label>
+                  <input type="range" id="filter-price-max" name="price_max" min="0" max="500" value="500" data-filter-price-max aria-label="Prix maximum">
+                </div>
+                <div class="u-flex u-justify-between u-text-xs u-text-muted" >
+                  <span>0 €</span>
+                  <span>500 €</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand / Artisan filter -->
+        <div class="accordion" data-component="accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger filter-group__title" aria-expanded="true" data-action="toggle-accordion" data-target="#filter-brand">
+              <span>Artisan</span>
+              <svg class="accordion__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+            <div class="accordion__panel" id="filter-brand" data-state="open">
+              <div class="accordion__panel-inner">
+                <div class="filter-grid">
+                  <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input" name="brand" value="atelier-du-sud" data-filter-brand>
+                    <span>Atelier du Sud</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input" name="brand" value="terre-et-feu" data-filter-brand checked>
+                    <span>Terre & Feu</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input" name="brand" value="les-mains" data-filter-brand>
+                    <span>Les Mains</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input" name="brand" value="poterie-nord" data-filter-brand>
+                    <span>Poterie du Nord</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rating filter -->
+        <div class="accordion" data-component="accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger filter-group__title" aria-expanded="true" data-action="toggle-accordion" data-target="#filter-rating">
+              <span>Note</span>
+              <svg class="accordion__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+            <div class="accordion__panel" id="filter-rating" data-state="open">
+              <div class="accordion__panel-inner">
+                <div class="filter-grid">
+                  <label class="radio">
+                    <input type="radio" name="rating" class="radio__input" value="all" data-filter-rating checked>
+                    <span>Toutes</span>
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="rating" class="radio__input" value="4" data-filter-rating>
+                    <span>★★★★☆ et plus</span>
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="rating" class="radio__input" value="4.5" data-filter-rating>
+                    <span>★★★★½ et plus</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Availability -->
+        <div class="accordion" data-component="accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger filter-group__title" aria-expanded="true" data-action="toggle-accordion" data-target="#filter-availability">
+              <span>Disponibilité</span>
+              <svg class="accordion__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+            <div class="accordion__panel" id="filter-availability" data-state="open">
+              <div class="accordion__panel-inner">
+                <div class="filter-grid">
+                  <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input" name="availability" value="in-stock" data-filter-availability checked>
+                    <span>En stock</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input" name="availability" value="preorder" data-filter-availability>
+                    <span>Précommande</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reset filters -->
+        <button class="btn btn--ghost btn--sm u-mt-2 u-w-full"  data-action="reset-filters">Réinitialiser les filtres</button>
+      </aside>
+
+      <!-- MAIN: Toolbar + Product grid -->
+      <div>
+
+        <!-- Toolbar -->
+        <div class="category-toolbar">
+          <p class="category-count" data-filter-result-count>24 produits</p>
+
+          <form class="form-group u-flex u-items-center u-gap-3" >
+            <label for="filter-sort" class="sr-only">Trier par</label>
+            <select id="filter-sort" name="sort" class="form-select" data-filter-sort>
+              <option value="relevance">Pertinence</option>
+              <option value="price-asc">Prix croissant</option>
+              <option value="price-desc">Prix décroissant</option>
+              <option value="newest">Nouveautés</option>
+              <option value="rating">Meilleures notes</option>
+            </select>
+          </form>
+        </div>
+
+        <!-- ===== Loading state ===== -->
+        <div class="state-loading">
+          <div class="grid-3">
+            <div class="skeleton skeleton--image u-aspect-3-4" ></div>
+            <div class="skeleton skeleton--image u-aspect-3-4" ></div>
+            <div class="skeleton skeleton--image u-aspect-3-4" ></div>
+            <div class="skeleton skeleton--image u-aspect-3-4" ></div>
+            <div class="skeleton skeleton--image u-aspect-3-4" ></div>
+            <div class="skeleton skeleton--image u-aspect-3-4" ></div>
+            <div class="skeleton skeleton--image u-aspect-3-4" ></div>
+            <div class="skeleton skeleton--image u-aspect-3-4" ></div>
+          </div>
+        </div>
+
+        <!-- ===== Error state ===== -->
+        <div class="state-error">
+          <div class="empty-state">
+            <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="var(--color-error)" stroke-width="1.5" aria-hidden="true">
+              <circle cx="32" cy="32" r="22"/>
+              <path d="M26 26l12 12M38 26l-12 12"/>
+            </svg>
+            <h4 class="empty-state__title">Erreur de chargement</h4>
+            <p class="empty-state__text">Les produits n'ont pas pu être chargés. Veuillez réessayer.</p>
+            <button class="btn btn--secondary" data-action="retry">Réessayer</button>
+          </div>
+        </div>
+
+        <!-- ===== Empty state ===== -->
+        <div class="state-empty">
+          <div class="empty-state">
+            <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="var(--color-ink-subtle)" stroke-width="1.5" aria-hidden="true">
+              <rect x="10" y="14" width="44" height="40" rx="3"/>
+              <path d="M22 30h20M22 38h14"/>
+            </svg>
+            <h4 class="empty-state__title">Aucun produit trouvé</h4>
+            <p class="empty-state__text">Essayez de modifier vos filtres ou d'élargir votre recherche.</p>
+            <button class="btn btn--secondary" data-action="reset-filters">Réinitialiser les filtres</button>
+          </div>
+        </div>
+
+        <!-- ===== Content: Product grid ===== -->
+        <div class="state-content">
+          <div class="grid-3">
+            <!-- Product 1 -->
+            <article class="product-card" data-component="product-card" data-product-card content="Céramique Tasse artisanale — Bleu Azur 4.8 34.00">
+              <div class="product-card__image-wrapper">
+                <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4" style="background:oklch(85% 0.04 245)">Tasse Azur</div>
+                <span class="badge badge--accent product-card__badge">Nouveau</span>
+                <div class="product-card__actions">
+                  <button class="product-card__action-btn" aria-label="Ajouter aux favoris" data-component="favorite-toggle" data-product-id="c1" data-state="inactive">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <a href="product.html" class="product-card__body">
+                <span class="product-card__category">Céramique</span>
+                <h3 class="product-card__title">Tasse artisanale — Bleu Azur</h3>
+                <div class="product-card__rating">
+                  <span class="product-card__stars" aria-label="4.8 sur 5 étoiles">★★★★★</span>
+                  <span>4.8</span>
+                  <span>(47)</span>
+                </div>
+                <div class="product-card__price">34,00 €</div>
+              </a>
+            </article>
+
+            <!-- Product 2 -->
+            <article class="product-card" data-component="product-card" data-product-card content="Céramique Bol petit-déjeuner — Grès naturel 4.7 22.00">
+              <div class="product-card__image-wrapper">
+                <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4" style="background:oklch(88% 0.03 80)">Bol Grès</div>
+                <div class="product-card__actions">
+                  <button class="product-card__action-btn" aria-label="Ajouter aux favoris" data-component="favorite-toggle" data-product-id="c2" data-state="inactive">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <a href="product.html" class="product-card__body">
+                <span class="product-card__category">Céramique</span>
+                <h3 class="product-card__title">Bol petit-déjeuner — Grès naturel</h3>
+                <div class="product-card__rating">
+                  <span class="product-card__stars" aria-label="4.7 sur 5 étoiles">★★★★★</span>
+                  <span>4.7</span>
+                  <span>(32)</span>
+                </div>
+                <div class="product-card__price">22,00 €</div>
+              </a>
+            </article>
+
+            <!-- Product 3 -->
+            <article class="product-card" data-component="product-card" data-product-card content="Céramique Vase en grès — Grand modèle 4.5 89.00 110.00">
+              <div class="product-card__image-wrapper">
+                <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4" style="background:oklch(82% 0.04 20)">Vase Grès</div>
+                <span class="badge badge--warning product-card__badge">Promo</span>
+                <div class="product-card__actions">
+                  <button class="product-card__action-btn" aria-label="Ajouter aux favoris" data-component="favorite-toggle" data-product-id="c3" data-state="inactive">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <a href="product.html" class="product-card__body">
+                <span class="product-card__category">Céramique</span>
+                <h3 class="product-card__title">Vase en grès — Grand modèle</h3>
+                <div class="product-card__rating">
+                  <span class="product-card__stars" aria-label="4.5 sur 5 étoiles">★★★★★</span>
+                  <span>4.5</span>
+                  <span>(16)</span>
+                </div>
+                <div class="product-card__price">
+                  89,00 €
+                  <span class="product-card__price--old">110,00 €</span>
+                </div>
+              </a>
+            </article>
+
+            <!-- Product 4 -->
+            <article class="product-card" data-component="product-card" data-product-card content="Céramique Pichet — Émail blanc cassé 4.6 55.00">
+              <div class="product-card__image-wrapper">
+                <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4" style="background:oklch(90% 0.02 260)">Pichet</div>
+                <div class="product-card__actions">
+                  <button class="product-card__action-btn" aria-label="Ajouter aux favoris" data-component="favorite-toggle" data-product-id="c4" data-state="inactive">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <a href="product.html" class="product-card__body">
+                <span class="product-card__category">Céramique</span>
+                <h3 class="product-card__title">Pichet — Émail blanc cassé</h3>
+                <div class="product-card__rating">
+                  <span class="product-card__stars" aria-label="4.6 sur 5 étoiles">★★★★★</span>
+                  <span>4.6</span>
+                  <span>(21)</span>
+                </div>
+                <div class="product-card__price">55,00 €</div>
+              </a>
+            </article>
+
+            <!-- Product 5 -->
+            <article class="product-card" data-component="product-card" data-product-card content="Céramique Assiette plate — Porcelaine (x2) 4.9 48.00">
+              <div class="product-card__image-wrapper">
+                <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4" style="background:oklch(87% 0.03 160)">Assiettes</div>
+                <span class="badge badge--success product-card__badge">Best-seller</span>
+                <div class="product-card__actions">
+                  <button class="product-card__action-btn" aria-label="Ajouter aux favoris" data-component="favorite-toggle" data-product-id="c5" data-state="inactive">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <a href="product.html" class="product-card__body">
+                <span class="product-card__category">Céramique</span>
+                <h3 class="product-card__title">Assiette plate — Porcelaine (x2)</h3>
+                <div class="product-card__rating">
+                  <span class="product-card__stars" aria-label="4.9 sur 5 étoiles">★★★★★</span>
+                  <span>4.9</span>
+                  <span>(38)</span>
+                </div>
+                <div class="product-card__price">48,00 €</div>
+              </a>
+            </article>
+
+            <!-- Product 6 -->
+            <article class="product-card" data-component="product-card" data-product-card content="Céramique Mug — Collection Atelier 4.8 28.00">
+              <div class="product-card__image-wrapper">
+                <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4" style="background:oklch(84% 0.04 300)">Mug</div>
+                <div class="product-card__actions">
+                  <button class="product-card__action-btn" aria-label="Ajouter aux favoris" data-component="favorite-toggle" data-product-id="c6" data-state="inactive">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <a href="product.html" class="product-card__body">
+                <span class="product-card__category">Céramique</span>
+                <h3 class="product-card__title">Mug — Collection Atelier</h3>
+                <div class="product-card__rating">
+                  <span class="product-card__stars" aria-label="4.8 sur 5 étoiles">★★★★★</span>
+                  <span>4.8</span>
+                  <span>(29)</span>
+                </div>
+                <div class="product-card__price">28,00 €</div>
+              </a>
+            </article>
+
+            <!-- Product 7 -->
+            <article class="product-card" data-component="product-card" data-product-card content="Céramique Théière — Fonte artisanale 4.4 165.00 195.00">
+              <div class="product-card__image-wrapper">
+                <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4" style="background:oklch(80% 0.04 45)">Théière</div>
+                <span class="badge badge--warning product-card__badge">Promo</span>
+                <div class="product-card__actions">
+                  <button class="product-card__action-btn" aria-label="Ajouter aux favoris" data-component="favorite-toggle" data-product-id="c7" data-state="inactive">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <a href="product.html" class="product-card__body">
+                <span class="product-card__category">Céramique</span>
+                <h3 class="product-card__title">Théière — Fonte artisanale</h3>
+                <div class="product-card__rating">
+                  <span class="product-card__stars" aria-label="4.4 sur 5 étoiles">★★★★★</span>
+                  <span>4.4</span>
+                  <span>(12)</span>
+                </div>
+                <div class="product-card__price">
+                  165,00 €
+                  <span class="product-card__price--old">195,00 €</span>
+                </div>
+              </a>
+            </article>
+
+            <!-- Product 8 -->
+            <article class="product-card" data-component="product-card" data-product-card content="Céramique Set de 4 tasses — Expresso 4.7 64.00">
+              <div class="product-card__image-wrapper">
+                <div class="product-card__image u-flex u-items-center u-justify-center u-text-sm u-text-subtle u-aspect-3-4" style="background:oklch(83% 0.03 100)">Set Tasses</div>
+                <div class="product-card__actions">
+                  <button class="product-card__action-btn" aria-label="Ajouter aux favoris" data-component="favorite-toggle" data-product-id="c8" data-state="inactive">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <a href="product.html" class="product-card__body">
+                <span class="product-card__category">Céramique</span>
+                <h3 class="product-card__title">Set de 4 tasses — Expresso</h3>
+                <div class="product-card__rating">
+                  <span class="product-card__stars" aria-label="4.7 sur 5 étoiles">★★★★★</span>
+                  <span>4.7</span>
+                  <span>(15)</span>
+                </div>
+                <div class="product-card__price">64,00 €</div>
+              </a>
+            </article>
+          </div>
+
+          <!-- Pagination -->
+          <nav class="pagination u-pt-8" aria-label="Pagination" >
+            <button class="pagination__btn" disabled aria-label="Page précédente">&larr; Précédent</button>
+            <button class="pagination__btn pagination__btn--active" aria-current="page">1</button>
+            <button class="pagination__btn">2</button>
+            <button class="pagination__btn">3</button>
+            <button class="pagination__btn" aria-label="Page suivante">Suivant &rarr;</button>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="shop-footer" role="contentinfo">
+  <div class="container">
+    <div class="shop-footer__grid">
+      <div>
+        <h3 class="shop-footer__title">Épure</h3>
+        <p class="u-text-sm u-line-1-7 u-text-muted" >
+          Boutique de pièces artisanales et design minimaliste. Chaque objet est sélectionné pour sa beauté intemporelle.
+        </p>
+      </div>
+      <div>
+        <h3 class="shop-footer__title">Boutique</h3>
+        <a href="category.html" class="shop-footer__link">Nouveautés</a>
+        <a href="category.html" class="shop-footer__link">Céramique</a>
+        <a href="category.html" class="shop-footer__link">Textile</a>
+        <a href="category.html" class="shop-footer__link">Décoration</a>
+        <a href="category.html" class="shop-footer__link">Luminaires</a>
+      </div>
+      <div>
+        <h3 class="shop-footer__title">Service client</h3>
+        <a href="#" class="shop-footer__link">Contact</a>
+        <a href="#" class="shop-footer__link">Livraison & Retours</a>
+        <a href="#" class="shop-footer__link">FAQ</a>
+        <a href="#" class="shop-footer__link">Guide des tailles</a>
+      </div>
+      <div>
+        <h3 class="shop-footer__title">Newsletter</h3>
+        <p class="u-text-sm u-text-muted" >Recevez nos inspirations et offres exclusives.</p>
+        <form class="shop-footer__newsletter-input" action="#" method="post">
+          <label for="footer-email" class="sr-only">Votre adresse email</label>
+          <input type="email" id="footer-email" name="footer_email" placeholder="votre@email.com" autocomplete="email" required>
+          <button type="submit" class="btn btn--primary btn--sm">OK</button>
+        </form>
+      </div>
+    </div>
+    <div class="shop-footer__bottom">
+      <span>&copy; 2026 Épure. Tous droits réservés.</span>
+      <span>Fait avec soin en France</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ CART DRAWER ═══ -->
+<div class="drawer-backdrop" data-component="cart-drawer" data-state="closed" aria-hidden="true">
+  <div class="drawer" role="dialog" aria-modal="true" aria-label="Panier">
+    <div class="drawer__header">
+      <h3>Panier</h3>
+      <button class="drawer__close" data-action="close-cart" aria-label="Fermer le panier">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body" data-component="cart-drawer-items" data-state="empty">
+      <div class="state-loading">
+        <div class="skeleton skeleton--text"></div>
+        <div class="skeleton skeleton--text"></div>
+        <div class="skeleton skeleton--text u-w-60" ></div>
+      </div>
+      <div class="state-empty">
+        <div class="empty-state">
+          <svg class="empty-state__icon" viewBox="0 0 64 64" fill="none" stroke="var(--color-ink-subtle)" stroke-width="1.5" aria-hidden="true">
+            <rect x="10" y="14" width="44" height="40" rx="3"/>
+            <path d="M22 30h20M22 38h14"/>
+          </svg>
+          <h4 class="empty-state__title">Votre panier est vide</h4>
+          <p class="empty-state__text">Parcourez nos catégories pour découvrir des pièces uniques.</p>
+        </div>
+      </div>
+      <div class="state-error">
+        <p class="u-text-error" >Erreur lors du chargement du panier.</p>
+      </div>
+      <div class="state-content"></div>
+    </div>
+    <div class="drawer__footer">
+      <a href="cart.html" class="btn btn--primary u-w-full" >Passer commande</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST CONTAINER ═══ -->
+<div class="toast-container" data-component="toast" aria-live="polite" aria-atomic="true"></div>
+
+<!-- ═══ TEMPLATES ═══ -->
+<template id="template-product-card">
+  <article class="product-card" data-component="product-card" data-product-card content="">
+    <div class="product-card__image-wrapper">
+      <img class="product-card__image" data-slot="image" src="" alt="">
+      <span class="badge badge--accent product-card__badge" data-slot="badge"></span>
+      <div class="product-card__actions">
+        <button class="product-card__action-btn" aria-label="Ajouter aux favoris" data-component="favorite-toggle" data-product-id="" data-state="inactive">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17.5l-1.45-1.32C3.4 11.36 1.5 9.57 1.5 7.28 1.5 4.77 3.43 2.5 6 2.5c1.42 0 2.78.7 3.65 1.78L10 4.7l.35-.42C11.22 3.2 12.58 2.5 14 2.5c2.57 0 4.5 2.27 4.5 4.78 0 2.29-1.9 4.08-7.05 8.9L10 17.5z"/></svg>
+        </button>
+      </div>
+    </div>
+    <a data-slot="link" href="#" class="product-card__body">
+      <span class="product-card__category" data-slot="category"></span>
+      <h3 class="product-card__title" data-slot="title"></h3>
+      <div class="product-card__rating">
+        <span class="product-card__stars" data-slot="stars"></span>
+        <span data-slot="rating"></span>
+        <span data-slot="review-count"></span>
+      </div>
+      <div class="product-card__price">
+        <span data-slot="price"></span>
+        <span class="product-card__price--old" data-slot="old-price"></span>
+      </div>
+    </a>
+  </article>
+</template>
+
+<template id="template-cart-drawer-item">
+  <div class="u-flex u-items-center u-gap-4 u-border-b u-py-4" >
+    <img class="u-bg-border-light u-radius-sm u-img-64x80" data-slot="image" src="" alt="" >
+    <div class="u-flex-1" >
+      <p class="u-fw-medium"  data-slot="name"></p>
+      <p class="u-text-xs u-text-muted"  data-slot="variant"></p>
+      <div class="u-flex u-items-center u-justify-between u-mt-2" >
+        <div class="stepper" data-component="stepper" style="--stepper-size:32px;">
+          <button class="stepper__btn" aria-label="Réduire" data-action="decrease">−</button>
+          <input type="number" class="stepper__input" value="1" min="1" data-slot="quantity" aria-label="Quantité">
+          <button class="stepper__btn" aria-label="Augmenter" data-action="increase">+</button>
+        </div>
+        <span class="u-fw-semibold"  data-slot="price"></span>
+      </div>
+    </div>
+    <button class="btn btn--icon btn--ghost u-self-start" aria-label="Supprimer" data-action="remove" >
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+  </div>
+</template>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script src="js/ui.js"></script>
+<script src="js/shop.js"></script>
+
+</body>
+</html>
