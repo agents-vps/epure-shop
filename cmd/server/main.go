@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-	dev := flag.Bool("dev", false, "Development mode")
+	dev := flag.Bool("dev", false, "Development mode") // true disables Secure cookie flag (HTTP-only local testing)
 	port := flag.Int("port", 8090, "HTTP port")
 	flag.Parse()
 
