@@ -2,8 +2,6 @@ package middleware
 
 import (
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
 	"log/slog"
 	"net/http"
 	"strings"
@@ -73,10 +71,8 @@ func (sa *SessionAuth) Middleware(next http.Handler) http.Handler {
 			return
 		}
 
-		// Hash the raw cookie value with SHA-256 to get the lookup key.
-		hashed := hashToken(token)
-
-		userID, role, err := sa.Store.Get(r.Context(), hashed)
+		// Pass the raw token to the store; it handles hashing internally.
+		userID, role, err := sa.Store.Get(r.Context(), token)
 		if err != nil {
 			sa.Logger.Warn("session lookup failed",
 				slog.String("error", err.Error()),
@@ -90,10 +86,4 @@ func (sa *SessionAuth) Middleware(next http.Handler) http.Handler {
 		ctx = context.WithValue(ctx, keyRole, role)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
-}
-
-// hashToken returns the hex-encoded SHA-256 hash of s.
-func hashToken(s string) string {
-	h := sha256.Sum256([]byte(s))
-	return hex.EncodeToString(h[:])
 }

@@ -23,14 +23,18 @@ func RequireAuth() func(http.Handler) http.Handler {
 	}
 }
 
-// RequireAdmin returns a middleware that returns 403 Forbidden unless the
+// RequireAdmin returns a middleware that redirects to /admin/login unless the
 // authenticated user has the "admin" role.
 func RequireAdmin() func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			role, ok := RoleFromContext(r.Context())
 			if !ok || role != "admin" {
-				http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
+				if r.Header.Get("X-Up-Version") != "" {
+					http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)
+					return
+				}
+				http.Redirect(w, r, "/admin/login", http.StatusSeeOther)
 				return
 			}
 			next.ServeHTTP(w, r)
