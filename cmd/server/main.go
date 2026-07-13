@@ -127,6 +127,7 @@ func main() {
 
 	// ─── Middleware stack ───
 	var h http.Handler = mux
+	h = middleware.SecurityHeaders()(h)
 	h = middleware.CSRF()(h)
 	h = middleware.NewSessionAuth(sessions, logger).Middleware(h)
 	h = middleware.Recover(logger)(h)

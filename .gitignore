@@ -1,0 +1,5 @@
+server
+shop.db
+shop.db-shm
+shop.db-wal
+.hermes/
