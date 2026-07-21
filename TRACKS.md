@@ -27,6 +27,7 @@ Backend Go + Unpoly pour la boutique Épure — architecture hexagonale, SQLite,
 | http-handlers | hermes | — | done | sqlite-adapters, templates-conversion, unpoly-middleware |
 | main-wiring | hermes | — | done | http-handlers |
 | security-audit | hermes | — | done | main-wiring |
+| gateway-memory-diag | hermes | — | completed | — |
 
 ### upload-product-images
 **À livrer** : Upload d'image dans le formulaire produit admin (MaxBytesReader, DetectContentType, renommage)
